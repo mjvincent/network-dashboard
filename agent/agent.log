@@ -1,0 +1,806 @@
+Starting Agent on Michaels-MacBook-Pro.local...
+Pushing to InfluxDB at http://localhost:8086
+[2026-06-02 14:48:06] Collected metrics: {'cpu_usage_percent': 66.9, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6371459072, 'network_bytes_recv': 3712565248}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:48:17] Collected metrics: {'cpu_usage_percent': 52.0, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6377919488, 'network_bytes_recv': 3712884736}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:48:28] Collected metrics: {'cpu_usage_percent': 55.1, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6384366592, 'network_bytes_recv': 3713090560}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:48:39] Collected metrics: {'cpu_usage_percent': 50.2, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6390623232, 'network_bytes_recv': 3713251328}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:48:50] Collected metrics: {'cpu_usage_percent': 73.0, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6396751872, 'network_bytes_recv': 3713288192}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:49:01] Collected metrics: {'cpu_usage_percent': 65.6, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6403232768, 'network_bytes_recv': 3713294336}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:49:13] Collected metrics: {'cpu_usage_percent': 57.0, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6409414656, 'network_bytes_recv': 3713301504}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:49:24] Collected metrics: {'cpu_usage_percent': 61.5, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6415678464, 'network_bytes_recv': 3713520640}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:49:35] Collected metrics: {'cpu_usage_percent': 76.9, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6422019072, 'network_bytes_recv': 3713731584}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:49:46] Collected metrics: {'cpu_usage_percent': 51.8, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6428181504, 'network_bytes_recv': 3713786880}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:49:57] Collected metrics: {'cpu_usage_percent': 47.8, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6434281472, 'network_bytes_recv': 3713798144}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:50:08] Collected metrics: {'cpu_usage_percent': 87.4, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6440315904, 'network_bytes_recv': 3713804288}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:50:19] Collected metrics: {'cpu_usage_percent': 51.2, 'memory_usage_percent': 94.5, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6446444544, 'network_bytes_recv': 3713818624}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:50:30] Collected metrics: {'cpu_usage_percent': 43.8, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6452633600, 'network_bytes_recv': 3713823744}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:50:41] Collected metrics: {'cpu_usage_percent': 59.8, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6458679296, 'network_bytes_recv': 3713835008}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:50:52] Collected metrics: {'cpu_usage_percent': 44.6, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6464671744, 'network_bytes_recv': 3713861632}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:51:03] Collected metrics: {'cpu_usage_percent': 41.4, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6470775808, 'network_bytes_recv': 3713872896}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:51:14] Collected metrics: {'cpu_usage_percent': 39.1, 'memory_usage_percent': 94.4, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6476889088, 'network_bytes_recv': 3713879040}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:51:25] Collected metrics: {'cpu_usage_percent': 51.5, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6483172352, 'network_bytes_recv': 3714131968}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:51:36] Collected metrics: {'cpu_usage_percent': 62.7, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6489453568, 'network_bytes_recv': 3714334720}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:51:48] Collected metrics: {'cpu_usage_percent': 54.0, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6495735808, 'network_bytes_recv': 3714351104}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:51:59] Collected metrics: {'cpu_usage_percent': 80.9, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6501928960, 'network_bytes_recv': 3714361344}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:52:12] Collected metrics: {'cpu_usage_percent': 87.5, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6509528064, 'network_bytes_recv': 3714595840}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:52:24] Collected metrics: {'cpu_usage_percent': 50.9, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6516503552, 'network_bytes_recv': 3714814976}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:52:35] Collected metrics: {'cpu_usage_percent': 55.7, 'memory_usage_percent': 94.4, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6522814464, 'network_bytes_recv': 3714996224}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:52:47] Collected metrics: {'cpu_usage_percent': 43.2, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6528994304, 'network_bytes_recv': 3715007488}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:52:58] Collected metrics: {'cpu_usage_percent': 60.9, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6535100416, 'network_bytes_recv': 3715028992}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:53:09] Collected metrics: {'cpu_usage_percent': 42.1, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6541122560, 'network_bytes_recv': 3715045376}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:53:20] Collected metrics: {'cpu_usage_percent': 52.7, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6547259392, 'network_bytes_recv': 3715051520}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:53:31] Collected metrics: {'cpu_usage_percent': 54.1, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6553453568, 'network_bytes_recv': 3715060736}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:53:42] Collected metrics: {'cpu_usage_percent': 59.5, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6559470592, 'network_bytes_recv': 3715076096}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:53:53] Collected metrics: {'cpu_usage_percent': 52.5, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6565675008, 'network_bytes_recv': 3715247104}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:54:04] Collected metrics: {'cpu_usage_percent': 56.0, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6571674624, 'network_bytes_recv': 3715252224}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:54:15] Collected metrics: {'cpu_usage_percent': 53.2, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6577681408, 'network_bytes_recv': 3715279872}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:54:26] Collected metrics: {'cpu_usage_percent': 55.9, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6583698432, 'network_bytes_recv': 3715294208}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:54:37] Collected metrics: {'cpu_usage_percent': 65.1, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6588360704, 'network_bytes_recv': 3715437568}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:54:48] Collected metrics: {'cpu_usage_percent': 49.5, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6590821376, 'network_bytes_recv': 3715492864}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:55:00] Collected metrics: {'cpu_usage_percent': 59.3, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6593212416, 'network_bytes_recv': 3715508224}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:55:11] Collected metrics: {'cpu_usage_percent': 51.4, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6595542016, 'network_bytes_recv': 3715515392}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:55:22] Collected metrics: {'cpu_usage_percent': 44.3, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6597928960, 'network_bytes_recv': 3715523584}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:55:33] Collected metrics: {'cpu_usage_percent': 42.3, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6600356864, 'network_bytes_recv': 3715536896}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:55:44] Collected metrics: {'cpu_usage_percent': 43.4, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6602718208, 'network_bytes_recv': 3715542016}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:55:55] Collected metrics: {'cpu_usage_percent': 45.3, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6605083648, 'network_bytes_recv': 3715559424}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:56:06] Collected metrics: {'cpu_usage_percent': 41.2, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6607475712, 'network_bytes_recv': 3715581952}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:56:17] Collected metrics: {'cpu_usage_percent': 48.9, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6609902592, 'network_bytes_recv': 3715588096}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:56:28] Collected metrics: {'cpu_usage_percent': 59.3, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6612261888, 'network_bytes_recv': 3715594240}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:56:39] Collected metrics: {'cpu_usage_percent': 57.4, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6614743040, 'network_bytes_recv': 3715609600}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:56:50] Collected metrics: {'cpu_usage_percent': 48.1, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6617098240, 'network_bytes_recv': 3715618816}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:57:01] Collected metrics: {'cpu_usage_percent': 60.2, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6619506688, 'network_bytes_recv': 3715624960}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:57:12] Collected metrics: {'cpu_usage_percent': 69.8, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6622376960, 'network_bytes_recv': 3715938304}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:57:23] Collected metrics: {'cpu_usage_percent': 56.3, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6624758784, 'network_bytes_recv': 3715975168}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:57:34] Collected metrics: {'cpu_usage_percent': 79.0, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6627414016, 'network_bytes_recv': 3716157440}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:57:46] Collected metrics: {'cpu_usage_percent': 88.9, 'memory_usage_percent': 94.2, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6629899264, 'network_bytes_recv': 3716323328}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:57:57] Collected metrics: {'cpu_usage_percent': 58.5, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6632257536, 'network_bytes_recv': 3716330496}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:58:08] Collected metrics: {'cpu_usage_percent': 59.4, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6640611328, 'network_bytes_recv': 3716344832}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:58:19] Collected metrics: {'cpu_usage_percent': 47.2, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6643713024, 'network_bytes_recv': 3716361216}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:58:30] Collected metrics: {'cpu_usage_percent': 50.6, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6646266880, 'network_bytes_recv': 3716409344}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:58:41] Collected metrics: {'cpu_usage_percent': 49.5, 'memory_usage_percent': 94.5, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6648795136, 'network_bytes_recv': 3716448256}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:58:52] Collected metrics: {'cpu_usage_percent': 55.1, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6651302912, 'network_bytes_recv': 3716453376}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:59:03] Collected metrics: {'cpu_usage_percent': 45.2, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6653813760, 'network_bytes_recv': 3716467712}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:59:14] Collected metrics: {'cpu_usage_percent': 49.9, 'memory_usage_percent': 94.5, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6656306176, 'network_bytes_recv': 3716476928}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:59:25] Collected metrics: {'cpu_usage_percent': 54.5, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6658779136, 'network_bytes_recv': 3716483072}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:59:36] Collected metrics: {'cpu_usage_percent': 54.5, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6661393408, 'network_bytes_recv': 3716496384}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:59:47] Collected metrics: {'cpu_usage_percent': 64.2, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6663815168, 'network_bytes_recv': 3716516864}
+Successfully pushed to InfluxDB.
+[2026-06-02 14:59:59] Collected metrics: {'cpu_usage_percent': 40.4, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6666174464, 'network_bytes_recv': 3716523008}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:00:10] Collected metrics: {'cpu_usage_percent': 39.9, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6668533760, 'network_bytes_recv': 3716529152}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:00:21] Collected metrics: {'cpu_usage_percent': 40.9, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6670893056, 'network_bytes_recv': 3716543488}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:00:32] Collected metrics: {'cpu_usage_percent': 50.2, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6673350656, 'network_bytes_recv': 3716551680}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:00:43] Collected metrics: {'cpu_usage_percent': 49.7, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6675844096, 'network_bytes_recv': 3716572160}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:00:54] Collected metrics: {'cpu_usage_percent': 35.5, 'memory_usage_percent': 83.2, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6678200320, 'network_bytes_recv': 3716591616}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:01:05] Collected metrics: {'cpu_usage_percent': 46.8, 'memory_usage_percent': 83.2, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6680599552, 'network_bytes_recv': 3716598784}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:01:16] Collected metrics: {'cpu_usage_percent': 39.6, 'memory_usage_percent': 83.2, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6682909696, 'network_bytes_recv': 3716604928}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:01:27] Collected metrics: {'cpu_usage_percent': 39.0, 'memory_usage_percent': 83.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6685255680, 'network_bytes_recv': 3716618240}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:01:38] Collected metrics: {'cpu_usage_percent': 45.9, 'memory_usage_percent': 85.4, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6687872000, 'network_bytes_recv': 3716803584}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:01:49] Collected metrics: {'cpu_usage_percent': 45.6, 'memory_usage_percent': 91.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6690212864, 'network_bytes_recv': 3716809728}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:02:00] Collected metrics: {'cpu_usage_percent': 45.5, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6692622336, 'network_bytes_recv': 3716834304}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:02:11] Collected metrics: {'cpu_usage_percent': 76.2, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6695235584, 'network_bytes_recv': 3717018624}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:02:22] Collected metrics: {'cpu_usage_percent': 73.1, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6697798656, 'network_bytes_recv': 3717148672}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:02:33] Collected metrics: {'cpu_usage_percent': 46.8, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6700274688, 'network_bytes_recv': 3717163008}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:02:44] Collected metrics: {'cpu_usage_percent': 40.2, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6702711808, 'network_bytes_recv': 3717173248}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:02:55] Collected metrics: {'cpu_usage_percent': 51.6, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6705161216, 'network_bytes_recv': 3717180416}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:03:07] Collected metrics: {'cpu_usage_percent': 42.5, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6707513344, 'network_bytes_recv': 3717192704}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:03:18] Collected metrics: {'cpu_usage_percent': 47.4, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6709897216, 'network_bytes_recv': 3717202944}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:03:29] Collected metrics: {'cpu_usage_percent': 42.5, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6712239104, 'network_bytes_recv': 3717211136}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:03:40] Collected metrics: {'cpu_usage_percent': 39.2, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6714708992, 'network_bytes_recv': 3717240832}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:03:51] Collected metrics: {'cpu_usage_percent': 41.7, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6717336576, 'network_bytes_recv': 3717542912}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:04:02] Collected metrics: {'cpu_usage_percent': 75.1, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6719776768, 'network_bytes_recv': 3717682176}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:04:13] Collected metrics: {'cpu_usage_percent': 36.1, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6722191360, 'network_bytes_recv': 3717696512}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:04:24] Collected metrics: {'cpu_usage_percent': 39.2, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6724554752, 'network_bytes_recv': 3717703680}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:04:35] Collected metrics: {'cpu_usage_percent': 50.8, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6727013376, 'network_bytes_recv': 3717715968}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:04:46] Collected metrics: {'cpu_usage_percent': 41.4, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6729347072, 'network_bytes_recv': 3717727232}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:04:57] Collected metrics: {'cpu_usage_percent': 42.5, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6731743232, 'network_bytes_recv': 3717744640}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:05:08] Collected metrics: {'cpu_usage_percent': 43.5, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6734067712, 'network_bytes_recv': 3717750784}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:05:19] Collected metrics: {'cpu_usage_percent': 53.1, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6736448512, 'network_bytes_recv': 3717764096}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:05:31] Collected metrics: {'cpu_usage_percent': 89.8, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6738917376, 'network_bytes_recv': 3717777408}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:05:42] Collected metrics: {'cpu_usage_percent': 41.7, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6741457920, 'network_bytes_recv': 3717793792}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:05:53] Collected metrics: {'cpu_usage_percent': 49.1, 'memory_usage_percent': 94.5, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6743819264, 'network_bytes_recv': 3717803008}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:06:04] Collected metrics: {'cpu_usage_percent': 41.6, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6746157056, 'network_bytes_recv': 3717811200}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:06:15] Collected metrics: {'cpu_usage_percent': 44.3, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6748802048, 'network_bytes_recv': 3718017024}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:06:26] Collected metrics: {'cpu_usage_percent': 73.3, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6751456256, 'network_bytes_recv': 3718230016}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:06:37] Collected metrics: {'cpu_usage_percent': 57.7, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6754183168, 'network_bytes_recv': 3718432768}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:06:48] Collected metrics: {'cpu_usage_percent': 48.6, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6756718592, 'network_bytes_recv': 3718491136}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:07:00] Collected metrics: {'cpu_usage_percent': 49.6, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6759216128, 'network_bytes_recv': 3718503424}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:07:11] Collected metrics: {'cpu_usage_percent': 56.9, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6761819136, 'network_bytes_recv': 3718703104}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:07:22] Collected metrics: {'cpu_usage_percent': 44.0, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6764533760, 'network_bytes_recv': 3718907904}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:07:33] Collected metrics: {'cpu_usage_percent': 54.6, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6767153152, 'network_bytes_recv': 3719112704}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:07:44] Collected metrics: {'cpu_usage_percent': 53.7, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6769680384, 'network_bytes_recv': 3719124992}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:07:55] Collected metrics: {'cpu_usage_percent': 45.3, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6772452352, 'network_bytes_recv': 3719463936}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:08:06] Collected metrics: {'cpu_usage_percent': 35.8, 'memory_usage_percent': 94.3, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6774957056, 'network_bytes_recv': 3719590912}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:08:18] Collected metrics: {'cpu_usage_percent': 55.2, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6777350144, 'network_bytes_recv': 3719600128}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:08:29] Collected metrics: {'cpu_usage_percent': 41.7, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6779707392, 'network_bytes_recv': 3719610368}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:08:40] Collected metrics: {'cpu_usage_percent': 35.8, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6782229504, 'network_bytes_recv': 3719621632}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:08:51] Collected metrics: {'cpu_usage_percent': 51.2, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6784841728, 'network_bytes_recv': 3719859200}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:09:02] Collected metrics: {'cpu_usage_percent': 45.2, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6787504128, 'network_bytes_recv': 3720087552}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:09:13] Collected metrics: {'cpu_usage_percent': 48.2, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6790068224, 'network_bytes_recv': 3720302592}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:09:24] Collected metrics: {'cpu_usage_percent': 46.6, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6792705024, 'network_bytes_recv': 3720502272}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:09:35] Collected metrics: {'cpu_usage_percent': 76.5, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6793967616, 'network_bytes_recv': 3720712192}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:09:46] Collected metrics: {'cpu_usage_percent': 37.4, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6794456064, 'network_bytes_recv': 3720923136}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:09:57] Collected metrics: {'cpu_usage_percent': 43.7, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6794746880, 'network_bytes_recv': 3721134080}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:10:08] Collected metrics: {'cpu_usage_percent': 57.4, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6794947584, 'network_bytes_recv': 3721238528}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:10:19] Collected metrics: {'cpu_usage_percent': 51.6, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6795309056, 'network_bytes_recv': 3721443328}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:10:30] Collected metrics: {'cpu_usage_percent': 40.9, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6795469824, 'network_bytes_recv': 3721461760}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:10:41] Collected metrics: {'cpu_usage_percent': 51.7, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6795544576, 'network_bytes_recv': 3721484288}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:10:53] Collected metrics: {'cpu_usage_percent': 28.6, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6795612160, 'network_bytes_recv': 3721495552}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:11:04] Collected metrics: {'cpu_usage_percent': 47.4, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6795683840, 'network_bytes_recv': 3721505792}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:11:15] Collected metrics: {'cpu_usage_percent': 35.8, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6795770880, 'network_bytes_recv': 3721531392}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:11:26] Collected metrics: {'cpu_usage_percent': 44.3, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6796054528, 'network_bytes_recv': 3721761792}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:11:37] Collected metrics: {'cpu_usage_percent': 34.6, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6796474368, 'network_bytes_recv': 3721978880}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:11:48] Collected metrics: {'cpu_usage_percent': 41.2, 'memory_usage_percent': 94.4, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6796658688, 'network_bytes_recv': 3722152960}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:11:59] Collected metrics: {'cpu_usage_percent': 51.8, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6796988416, 'network_bytes_recv': 3722385408}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:12:10] Collected metrics: {'cpu_usage_percent': 40.6, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6797139968, 'network_bytes_recv': 3722444800}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:12:21] Collected metrics: {'cpu_usage_percent': 33.9, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6797502464, 'network_bytes_recv': 3722665984}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:12:32] Collected metrics: {'cpu_usage_percent': 50.6, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6797846528, 'network_bytes_recv': 3722883072}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:12:43] Collected metrics: {'cpu_usage_percent': 35.6, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6797884416, 'network_bytes_recv': 3722888192}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:12:54] Collected metrics: {'cpu_usage_percent': 39.2, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6798024704, 'network_bytes_recv': 3722902528}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:13:05] Collected metrics: {'cpu_usage_percent': 40.4, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6798088192, 'network_bytes_recv': 3722909696}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:13:16] Collected metrics: {'cpu_usage_percent': 38.4, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6798151680, 'network_bytes_recv': 3722916864}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:13:27] Collected metrics: {'cpu_usage_percent': 58.1, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6798399488, 'network_bytes_recv': 3723074560}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:13:39] Collected metrics: {'cpu_usage_percent': 63.2, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6798752768, 'network_bytes_recv': 3723289600}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:13:50] Collected metrics: {'cpu_usage_percent': 48.9, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6799072256, 'network_bytes_recv': 3723547648}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:14:01] Collected metrics: {'cpu_usage_percent': 38.7, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6799396864, 'network_bytes_recv': 3723829248}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:14:12] Collected metrics: {'cpu_usage_percent': 71.9, 'memory_usage_percent': 94.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6799629312, 'network_bytes_recv': 3724009472}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:14:23] Collected metrics: {'cpu_usage_percent': 36.3, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6799950848, 'network_bytes_recv': 3724279808}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:14:34] Collected metrics: {'cpu_usage_percent': 82.6, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6800235520, 'network_bytes_recv': 3724371968}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:14:45] Collected metrics: {'cpu_usage_percent': 39.5, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6800379904, 'network_bytes_recv': 3724389376}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:14:56] Collected metrics: {'cpu_usage_percent': 39.3, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6800655360, 'network_bytes_recv': 3724612608}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:15:08] Collected metrics: {'cpu_usage_percent': 50.2, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6800863232, 'network_bytes_recv': 3724776448}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:15:19] Collected metrics: {'cpu_usage_percent': 64.4, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6801097728, 'network_bytes_recv': 3724968960}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:15:30] Collected metrics: {'cpu_usage_percent': 47.9, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6801154048, 'network_bytes_recv': 3724975104}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:15:41] Collected metrics: {'cpu_usage_percent': 25.9, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6801268736, 'network_bytes_recv': 3724985344}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:15:52] Collected metrics: {'cpu_usage_percent': 31.5, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6801312768, 'network_bytes_recv': 3724992512}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:16:03] Collected metrics: {'cpu_usage_percent': 43.0, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6801388544, 'network_bytes_recv': 3725007872}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:16:14] Collected metrics: {'cpu_usage_percent': 33.2, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6801588224, 'network_bytes_recv': 3725162496}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:16:25] Collected metrics: {'cpu_usage_percent': 31.9, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6801896448, 'network_bytes_recv': 3725395968}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:16:36] Collected metrics: {'cpu_usage_percent': 38.9, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6802249728, 'network_bytes_recv': 3725620224}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:16:47] Collected metrics: {'cpu_usage_percent': 39.3, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6802488320, 'network_bytes_recv': 3725842432}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:16:58] Collected metrics: {'cpu_usage_percent': 51.5, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6802647040, 'network_bytes_recv': 3725917184}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:17:09] Collected metrics: {'cpu_usage_percent': 42.4, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6802991104, 'network_bytes_recv': 3726193664}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:17:21] Collected metrics: {'cpu_usage_percent': 58.1, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6803339264, 'network_bytes_recv': 3726406656}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:17:32] Collected metrics: {'cpu_usage_percent': 24.0, 'memory_usage_percent': 94.5, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6803552256, 'network_bytes_recv': 3726508032}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:17:43] Collected metrics: {'cpu_usage_percent': 38.1, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6803893248, 'network_bytes_recv': 3726776320}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:17:54] Collected metrics: {'cpu_usage_percent': 49.0, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6804147200, 'network_bytes_recv': 3726999552}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:18:05] Collected metrics: {'cpu_usage_percent': 42.9, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6804398080, 'network_bytes_recv': 3727210496}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:18:16] Collected metrics: {'cpu_usage_percent': 32.0, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6804526080, 'network_bytes_recv': 3727227904}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:18:27] Collected metrics: {'cpu_usage_percent': 34.3, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6804615168, 'network_bytes_recv': 3727239168}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:18:38] Collected metrics: {'cpu_usage_percent': 45.7, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6804763648, 'network_bytes_recv': 3727244288}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:18:49] Collected metrics: {'cpu_usage_percent': 48.5, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6804812800, 'network_bytes_recv': 3727256576}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:19:00] Collected metrics: {'cpu_usage_percent': 38.2, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6805069824, 'network_bytes_recv': 3727470592}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:19:11] Collected metrics: {'cpu_usage_percent': 47.7, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6805287936, 'network_bytes_recv': 3727648768}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:19:22] Collected metrics: {'cpu_usage_percent': 33.9, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6805583872, 'network_bytes_recv': 3727887360}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:19:33] Collected metrics: {'cpu_usage_percent': 44.9, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6805924864, 'network_bytes_recv': 3728107520}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:19:45] Collected metrics: {'cpu_usage_percent': 53.1, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6806136832, 'network_bytes_recv': 3728277504}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:19:56] Collected metrics: {'cpu_usage_percent': 40.2, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6806389760, 'network_bytes_recv': 3728488448}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:20:07] Collected metrics: {'cpu_usage_percent': 47.6, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6806679552, 'network_bytes_recv': 3728704512}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:20:18] Collected metrics: {'cpu_usage_percent': 50.6, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6807020544, 'network_bytes_recv': 3728956416}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:20:29] Collected metrics: {'cpu_usage_percent': 38.4, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6807293952, 'network_bytes_recv': 3729185792}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:20:40] Collected metrics: {'cpu_usage_percent': 38.4, 'memory_usage_percent': 94.5, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6807557120, 'network_bytes_recv': 3729335296}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:20:51] Collected metrics: {'cpu_usage_percent': 42.0, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6807824384, 'network_bytes_recv': 3729563648}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:21:02] Collected metrics: {'cpu_usage_percent': 42.2, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6807975936, 'network_bytes_recv': 3729675264}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:21:13] Collected metrics: {'cpu_usage_percent': 35.8, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6808218624, 'network_bytes_recv': 3729888256}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:21:24] Collected metrics: {'cpu_usage_percent': 38.1, 'memory_usage_percent': 94.5, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6808406016, 'network_bytes_recv': 3730033664}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:21:35] Collected metrics: {'cpu_usage_percent': 49.9, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6808727552, 'network_bytes_recv': 3730224128}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:21:46] Collected metrics: {'cpu_usage_percent': 41.6, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6808797184, 'network_bytes_recv': 3730239488}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:21:57] Collected metrics: {'cpu_usage_percent': 36.5, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6808834048, 'network_bytes_recv': 3730250752}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:22:09] Collected metrics: {'cpu_usage_percent': 57.1, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6808901632, 'network_bytes_recv': 3730259968}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:22:20] Collected metrics: {'cpu_usage_percent': 29.6, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6809104384, 'network_bytes_recv': 3730319360}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:22:31] Collected metrics: {'cpu_usage_percent': 54.9, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6809375744, 'network_bytes_recv': 3730482176}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:22:42] Collected metrics: {'cpu_usage_percent': 42.9, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6809672704, 'network_bytes_recv': 3730724864}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:22:53] Collected metrics: {'cpu_usage_percent': 31.4, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6809969664, 'network_bytes_recv': 3730946048}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:23:04] Collected metrics: {'cpu_usage_percent': 42.0, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6810171392, 'network_bytes_recv': 3731117056}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:23:15] Collected metrics: {'cpu_usage_percent': 32.7, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6810441728, 'network_bytes_recv': 3731331072}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:23:26] Collected metrics: {'cpu_usage_percent': 44.7, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6810647552, 'network_bytes_recv': 3731501056}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:23:37] Collected metrics: {'cpu_usage_percent': 31.0, 'memory_usage_percent': 89.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6810809344, 'network_bytes_recv': 3731518464}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:23:48] Collected metrics: {'cpu_usage_percent': 35.9, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6811034624, 'network_bytes_recv': 3731713024}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:23:59] Collected metrics: {'cpu_usage_percent': 35.0, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6811120640, 'network_bytes_recv': 3731721216}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:24:10] Collected metrics: {'cpu_usage_percent': 31.3, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6811175936, 'network_bytes_recv': 3731734528}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:24:21] Collected metrics: {'cpu_usage_percent': 57.3, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6811247616, 'network_bytes_recv': 3731750912}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:24:32] Collected metrics: {'cpu_usage_percent': 59.0, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6811426816, 'network_bytes_recv': 3731828736}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:24:44] Collected metrics: {'cpu_usage_percent': 46.6, 'memory_usage_percent': 94.3, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6811649024, 'network_bytes_recv': 3732015104}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:24:55] Collected metrics: {'cpu_usage_percent': 36.1, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6811886592, 'network_bytes_recv': 3732213760}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:25:06] Collected metrics: {'cpu_usage_percent': 39.8, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6812069888, 'network_bytes_recv': 3732346880}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:25:17] Collected metrics: {'cpu_usage_percent': 38.9, 'memory_usage_percent': 94.2, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6812253184, 'network_bytes_recv': 3732504576}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:25:28] Collected metrics: {'cpu_usage_percent': 50.5, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6812564480, 'network_bytes_recv': 3732754432}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:25:39] Collected metrics: {'cpu_usage_percent': 46.1, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6812947456, 'network_bytes_recv': 3732981760}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:25:50] Collected metrics: {'cpu_usage_percent': 47.4, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6813023232, 'network_bytes_recv': 3733012480}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:26:01] Collected metrics: {'cpu_usage_percent': 32.5, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6813249536, 'network_bytes_recv': 3733185536}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:26:12] Collected metrics: {'cpu_usage_percent': 32.8, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6813301760, 'network_bytes_recv': 3733194752}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:26:23] Collected metrics: {'cpu_usage_percent': 47.7, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6813360128, 'network_bytes_recv': 3733208064}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:26:34] Collected metrics: {'cpu_usage_percent': 44.6, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6813530112, 'network_bytes_recv': 3733218304}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:26:45] Collected metrics: {'cpu_usage_percent': 50.1, 'memory_usage_percent': 94.2, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6813761536, 'network_bytes_recv': 3733416960}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:26:56] Collected metrics: {'cpu_usage_percent': 33.8, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6813910016, 'network_bytes_recv': 3733517312}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:27:07] Collected metrics: {'cpu_usage_percent': 27.2, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6814219264, 'network_bytes_recv': 3733788672}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:27:18] Collected metrics: {'cpu_usage_percent': 44.1, 'memory_usage_percent': 94.5, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6814592000, 'network_bytes_recv': 3733928960}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:27:29] Collected metrics: {'cpu_usage_percent': 40.3, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6814851072, 'network_bytes_recv': 3734146048}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:27:40] Collected metrics: {'cpu_usage_percent': 29.9, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6815191040, 'network_bytes_recv': 3734368256}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:27:52] Collected metrics: {'cpu_usage_percent': 68.6, 'memory_usage_percent': 94.5, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6815408128, 'network_bytes_recv': 3734531072}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:28:03] Collected metrics: {'cpu_usage_percent': 33.1, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6816081920, 'network_bytes_recv': 3734819840}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:28:14] Collected metrics: {'cpu_usage_percent': 45.9, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6816351232, 'network_bytes_recv': 3735042048}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:28:25] Collected metrics: {'cpu_usage_percent': 44.4, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6816601088, 'network_bytes_recv': 3735261184}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:28:36] Collected metrics: {'cpu_usage_percent': 36.9, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6816965632, 'network_bytes_recv': 3735483392}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:28:47] Collected metrics: {'cpu_usage_percent': 48.1, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6817039360, 'network_bytes_recv': 3735504896}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:28:58] Collected metrics: {'cpu_usage_percent': 46.3, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6817405952, 'network_bytes_recv': 3735810048}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:29:09] Collected metrics: {'cpu_usage_percent': 41.9, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6817642496, 'network_bytes_recv': 3736030208}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:29:20] Collected metrics: {'cpu_usage_percent': 72.5, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6817891328, 'network_bytes_recv': 3736246272}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:29:31] Collected metrics: {'cpu_usage_percent': 35.4, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6818270208, 'network_bytes_recv': 3736451072}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:29:42] Collected metrics: {'cpu_usage_percent': 36.6, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6818565120, 'network_bytes_recv': 3736690688}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:29:53] Collected metrics: {'cpu_usage_percent': 43.3, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6818860032, 'network_bytes_recv': 3736914944}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:30:05] Collected metrics: {'cpu_usage_percent': 59.8, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6819152896, 'network_bytes_recv': 3737125888}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:30:16] Collected metrics: {'cpu_usage_percent': 34.4, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6819378176, 'network_bytes_recv': 3737282560}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:30:27] Collected metrics: {'cpu_usage_percent': 46.2, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6819798016, 'network_bytes_recv': 3737648128}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:30:38] Collected metrics: {'cpu_usage_percent': 66.1, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6820132864, 'network_bytes_recv': 3737856000}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:30:49] Collected metrics: {'cpu_usage_percent': 68.0, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6820422656, 'network_bytes_recv': 3738065920}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:31:00] Collected metrics: {'cpu_usage_percent': 43.2, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6820716544, 'network_bytes_recv': 3738294272}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:31:11] Collected metrics: {'cpu_usage_percent': 34.0, 'memory_usage_percent': 94.5, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6820936704, 'network_bytes_recv': 3738440704}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:31:22] Collected metrics: {'cpu_usage_percent': 40.0, 'memory_usage_percent': 94.5, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6821023744, 'network_bytes_recv': 3738457088}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:31:33] Collected metrics: {'cpu_usage_percent': 33.9, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6821385216, 'network_bytes_recv': 3738694656}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:31:44] Collected metrics: {'cpu_usage_percent': 34.4, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6821569536, 'network_bytes_recv': 3738798080}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:31:55] Collected metrics: {'cpu_usage_percent': 70.9, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6821770240, 'network_bytes_recv': 3738974208}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:32:06] Collected metrics: {'cpu_usage_percent': 41.0, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6821962752, 'network_bytes_recv': 3739081728}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:32:17] Collected metrics: {'cpu_usage_percent': 42.9, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6822184960, 'network_bytes_recv': 3739201536}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:32:28] Collected metrics: {'cpu_usage_percent': 45.4, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6822236160, 'network_bytes_recv': 3739208704}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:32:40] Collected metrics: {'cpu_usage_percent': 60.6, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6822379520, 'network_bytes_recv': 3739222016}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:32:51] Collected metrics: {'cpu_usage_percent': 40.5, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6822568960, 'network_bytes_recv': 3739239424}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:33:02] Collected metrics: {'cpu_usage_percent': 39.0, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6822618112, 'network_bytes_recv': 3739256832}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:33:13] Collected metrics: {'cpu_usage_percent': 50.2, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6822936576, 'network_bytes_recv': 3739484160}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:33:24] Collected metrics: {'cpu_usage_percent': 40.4, 'memory_usage_percent': 94.2, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6823171072, 'network_bytes_recv': 3739679744}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:33:35] Collected metrics: {'cpu_usage_percent': 72.7, 'memory_usage_percent': 94.3, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6823455744, 'network_bytes_recv': 3739791360}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:33:46] Collected metrics: {'cpu_usage_percent': 43.4, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6823757824, 'network_bytes_recv': 3739949056}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:33:57] Collected metrics: {'cpu_usage_percent': 37.0, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6824084480, 'network_bytes_recv': 3740181504}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:34:08] Collected metrics: {'cpu_usage_percent': 70.5, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6824370176, 'network_bytes_recv': 3740399616}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:34:19] Collected metrics: {'cpu_usage_percent': 37.7, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6824508416, 'network_bytes_recv': 3740432384}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:34:30] Collected metrics: {'cpu_usage_percent': 49.4, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6824832000, 'network_bytes_recv': 3740644352}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:34:41] Collected metrics: {'cpu_usage_percent': 41.7, 'memory_usage_percent': 95.2, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6825121792, 'network_bytes_recv': 3740656640}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:34:52] Collected metrics: {'cpu_usage_percent': 53.3, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6825159680, 'network_bytes_recv': 3740663808}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:35:03] Collected metrics: {'cpu_usage_percent': 35.2, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6825193472, 'network_bytes_recv': 3740674048}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:35:15] Collected metrics: {'cpu_usage_percent': 35.0, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6825255936, 'network_bytes_recv': 3740689408}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:35:26] Collected metrics: {'cpu_usage_percent': 41.4, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6825450496, 'network_bytes_recv': 3740845056}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:35:37] Collected metrics: {'cpu_usage_percent': 38.1, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6825795584, 'network_bytes_recv': 3741059072}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:35:48] Collected metrics: {'cpu_usage_percent': 62.1, 'memory_usage_percent': 94.2, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6826039296, 'network_bytes_recv': 3741243392}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:35:59] Collected metrics: {'cpu_usage_percent': 43.3, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6826355712, 'network_bytes_recv': 3741469696}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:36:10] Collected metrics: {'cpu_usage_percent': 43.6, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6826571776, 'network_bytes_recv': 3741617152}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:36:21] Collected metrics: {'cpu_usage_percent': 61.5, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6826921984, 'network_bytes_recv': 3741878272}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:36:32] Collected metrics: {'cpu_usage_percent': 59.1, 'memory_usage_percent': 95.2, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6827449344, 'network_bytes_recv': 3742099456}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:36:43] Collected metrics: {'cpu_usage_percent': 45.3, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6827633664, 'network_bytes_recv': 3742216192}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:36:54] Collected metrics: {'cpu_usage_percent': 34.3, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6827712512, 'network_bytes_recv': 3742227456}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:37:06] Collected metrics: {'cpu_usage_percent': 34.8, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6827930624, 'network_bytes_recv': 3742395392}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:37:17] Collected metrics: {'cpu_usage_percent': 39.1, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6828102656, 'network_bytes_recv': 3742412800}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:37:28] Collected metrics: {'cpu_usage_percent': 34.1, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6828194816, 'network_bytes_recv': 3742423040}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:37:39] Collected metrics: {'cpu_usage_percent': 49.9, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6828482560, 'network_bytes_recv': 3742509056}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:37:50] Collected metrics: {'cpu_usage_percent': 51.8, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6828664832, 'network_bytes_recv': 3742648320}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:38:01] Collected metrics: {'cpu_usage_percent': 37.2, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6829008896, 'network_bytes_recv': 3742925824}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:38:12] Collected metrics: {'cpu_usage_percent': 33.6, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6829193216, 'network_bytes_recv': 3743053824}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:38:23] Collected metrics: {'cpu_usage_percent': 34.0, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6829565952, 'network_bytes_recv': 3743333376}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:38:34] Collected metrics: {'cpu_usage_percent': 42.4, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6829932544, 'network_bytes_recv': 3743568896}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:38:45] Collected metrics: {'cpu_usage_percent': 36.5, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6830201856, 'network_bytes_recv': 3743794176}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:38:56] Collected metrics: {'cpu_usage_percent': 40.7, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6830385152, 'network_bytes_recv': 3743912960}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:39:07] Collected metrics: {'cpu_usage_percent': 47.8, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6830588928, 'network_bytes_recv': 3743925248}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:39:18] Collected metrics: {'cpu_usage_percent': 49.4, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6830881792, 'network_bytes_recv': 3744175104}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:39:30] Collected metrics: {'cpu_usage_percent': 76.5, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6831275008, 'network_bytes_recv': 3744300032}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:39:41] Collected metrics: {'cpu_usage_percent': 56.3, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6831789056, 'network_bytes_recv': 3744316416}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:39:52] Collected metrics: {'cpu_usage_percent': 59.6, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6831917056, 'network_bytes_recv': 3744330752}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:40:03] Collected metrics: {'cpu_usage_percent': 48.4, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6832310272, 'network_bytes_recv': 3744416768}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:40:15] Collected metrics: {'cpu_usage_percent': 40.7, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6832370688, 'network_bytes_recv': 3744428032}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:40:26] Collected metrics: {'cpu_usage_percent': 35.7, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6832658432, 'network_bytes_recv': 3744642048}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:40:37] Collected metrics: {'cpu_usage_percent': 39.1, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6832958464, 'network_bytes_recv': 3744820224}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:40:48] Collected metrics: {'cpu_usage_percent': 46.1, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6833299456, 'network_bytes_recv': 3745088512}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:40:59] Collected metrics: {'cpu_usage_percent': 37.2, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6833477632, 'network_bytes_recv': 3745221632}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:41:10] Collected metrics: {'cpu_usage_percent': 41.9, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6833799168, 'network_bytes_recv': 3745431552}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:41:21] Collected metrics: {'cpu_usage_percent': 46.6, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6834084864, 'network_bytes_recv': 3745644544}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:41:32] Collected metrics: {'cpu_usage_percent': 41.8, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6834388992, 'network_bytes_recv': 3745861632}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:41:43] Collected metrics: {'cpu_usage_percent': 62.5, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6834676736, 'network_bytes_recv': 3746074624}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:41:54] Collected metrics: {'cpu_usage_percent': 51.6, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6835006464, 'network_bytes_recv': 3746296832}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:42:06] Collected metrics: {'cpu_usage_percent': 49.2, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6835197952, 'network_bytes_recv': 3746430976}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:42:17] Collected metrics: {'cpu_usage_percent': 34.5, 'memory_usage_percent': 89.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6835546112, 'network_bytes_recv': 3746659328}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:42:28] Collected metrics: {'cpu_usage_percent': 30.3, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6835600384, 'network_bytes_recv': 3746680832}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:42:39] Collected metrics: {'cpu_usage_percent': 47.7, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6835726336, 'network_bytes_recv': 3746684928}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:42:50] Collected metrics: {'cpu_usage_percent': 40.2, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6835876864, 'network_bytes_recv': 3746693120}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:43:01] Collected metrics: {'cpu_usage_percent': 35.0, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6835950592, 'network_bytes_recv': 3746714624}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:43:12] Collected metrics: {'cpu_usage_percent': 34.7, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6836211712, 'network_bytes_recv': 3746934784}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:43:23] Collected metrics: {'cpu_usage_percent': 49.4, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6836498432, 'network_bytes_recv': 3747161088}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:43:34] Collected metrics: {'cpu_usage_percent': 50.3, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6836841472, 'network_bytes_recv': 3747386368}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:43:45] Collected metrics: {'cpu_usage_percent': 47.3, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6837174272, 'network_bytes_recv': 3747654656}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:43:56] Collected metrics: {'cpu_usage_percent': 43.1, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6837265408, 'network_bytes_recv': 3747709952}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:44:07] Collected metrics: {'cpu_usage_percent': 33.7, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6837522432, 'network_bytes_recv': 3747919872}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:44:18] Collected metrics: {'cpu_usage_percent': 45.3, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6837715968, 'network_bytes_recv': 3748033536}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:44:30] Collected metrics: {'cpu_usage_percent': 47.4, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6837951488, 'network_bytes_recv': 3748199424}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:44:41] Collected metrics: {'cpu_usage_percent': 49.0, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6838252544, 'network_bytes_recv': 3748397056}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:44:52] Collected metrics: {'cpu_usage_percent': 33.9, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6838543360, 'network_bytes_recv': 3748645888}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:45:03] Collected metrics: {'cpu_usage_percent': 31.5, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6838582272, 'network_bytes_recv': 3748655104}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:45:14] Collected metrics: {'cpu_usage_percent': 28.0, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6838681600, 'network_bytes_recv': 3748677632}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:45:25] Collected metrics: {'cpu_usage_percent': 39.9, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6838770688, 'network_bytes_recv': 3748688896}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:45:36] Collected metrics: {'cpu_usage_percent': 36.9, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6838898688, 'network_bytes_recv': 3748696064}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:45:47] Collected metrics: {'cpu_usage_percent': 41.2, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6839102464, 'network_bytes_recv': 3748884480}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:45:58] Collected metrics: {'cpu_usage_percent': 31.6, 'memory_usage_percent': 94.5, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6839182336, 'network_bytes_recv': 3748901888}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:46:09] Collected metrics: {'cpu_usage_percent': 43.8, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6839431168, 'network_bytes_recv': 3749110784}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:46:20] Collected metrics: {'cpu_usage_percent': 46.9, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6839687168, 'network_bytes_recv': 3749328896}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:46:31] Collected metrics: {'cpu_usage_percent': 43.2, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6840031232, 'network_bytes_recv': 3749559296}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:46:42] Collected metrics: {'cpu_usage_percent': 39.0, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6840327168, 'network_bytes_recv': 3749791744}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:46:53] Collected metrics: {'cpu_usage_percent': 51.7, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6840588288, 'network_bytes_recv': 3750006784}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:47:04] Collected metrics: {'cpu_usage_percent': 46.9, 'memory_usage_percent': 94.5, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6840720384, 'network_bytes_recv': 3750053888}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:47:15] Collected metrics: {'cpu_usage_percent': 40.8, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6841147392, 'network_bytes_recv': 3750366208}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:47:26] Collected metrics: {'cpu_usage_percent': 45.1, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6841423872, 'network_bytes_recv': 3750591488}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:47:38] Collected metrics: {'cpu_usage_percent': 53.6, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6841781248, 'network_bytes_recv': 3750813696}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:47:49] Collected metrics: {'cpu_usage_percent': 40.5, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6841969664, 'network_bytes_recv': 3750962176}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:48:00] Collected metrics: {'cpu_usage_percent': 30.2, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6842048512, 'network_bytes_recv': 3750975488}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:48:11] Collected metrics: {'cpu_usage_percent': 38.9, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6842086400, 'network_bytes_recv': 3750980608}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:48:22] Collected metrics: {'cpu_usage_percent': 37.5, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6842192896, 'network_bytes_recv': 3750990848}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:48:33] Collected metrics: {'cpu_usage_percent': 40.2, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6842345472, 'network_bytes_recv': 3751004160}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:48:44] Collected metrics: {'cpu_usage_percent': 51.1, 'memory_usage_percent': 95.2, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6842413056, 'network_bytes_recv': 3751016448}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:48:55] Collected metrics: {'cpu_usage_percent': 57.1, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6842509312, 'network_bytes_recv': 3751023616}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:49:06] Collected metrics: {'cpu_usage_percent': 55.1, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6842670080, 'network_bytes_recv': 3751129088}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:49:17] Collected metrics: {'cpu_usage_percent': 37.2, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6842813440, 'network_bytes_recv': 3751260160}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:49:28] Collected metrics: {'cpu_usage_percent': 67.1, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6843133952, 'network_bytes_recv': 3751493632}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:49:40] Collected metrics: {'cpu_usage_percent': 30.7, 'memory_usage_percent': 94.9, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6843274240, 'network_bytes_recv': 3751511040}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:49:51] Collected metrics: {'cpu_usage_percent': 60.0, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6843337728, 'network_bytes_recv': 3751518208}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:50:02] Collected metrics: {'cpu_usage_percent': 31.7, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6843569152, 'network_bytes_recv': 3751735296}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:50:13] Collected metrics: {'cpu_usage_percent': 34.1, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6843636736, 'network_bytes_recv': 3751748608}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:50:24] Collected metrics: {'cpu_usage_percent': 28.0, 'memory_usage_percent': 94.5, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6843714560, 'network_bytes_recv': 3751763968}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:50:35] Collected metrics: {'cpu_usage_percent': 48.2, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6843846656, 'network_bytes_recv': 3751771136}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:50:46] Collected metrics: {'cpu_usage_percent': 34.0, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6843908096, 'network_bytes_recv': 3751783424}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:50:57] Collected metrics: {'cpu_usage_percent': 29.2, 'memory_usage_percent': 94.4, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6843992064, 'network_bytes_recv': 3751795712}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:51:08] Collected metrics: {'cpu_usage_percent': 50.8, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6844088320, 'network_bytes_recv': 3751804928}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:51:19] Collected metrics: {'cpu_usage_percent': 44.9, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6844147712, 'network_bytes_recv': 3751819264}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:51:30] Collected metrics: {'cpu_usage_percent': 36.4, 'memory_usage_percent': 94.5, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6844216320, 'network_bytes_recv': 3751836672}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:51:41] Collected metrics: {'cpu_usage_percent': 41.2, 'memory_usage_percent': 94.3, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6844381184, 'network_bytes_recv': 3751858176}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:51:52] Collected metrics: {'cpu_usage_percent': 45.7, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6844475392, 'network_bytes_recv': 3751878656}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:52:04] Collected metrics: {'cpu_usage_percent': 35.6, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6844551168, 'network_bytes_recv': 3751890944}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:52:15] Collected metrics: {'cpu_usage_percent': 45.0, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6844659712, 'network_bytes_recv': 3751901184}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:52:26] Collected metrics: {'cpu_usage_percent': 35.1, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6844732416, 'network_bytes_recv': 3751916544}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:52:37] Collected metrics: {'cpu_usage_percent': 36.3, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6844899328, 'network_bytes_recv': 3751923712}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:52:48] Collected metrics: {'cpu_usage_percent': 42.3, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6845018112, 'network_bytes_recv': 3751948288}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:52:59] Collected metrics: {'cpu_usage_percent': 49.4, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6845520896, 'network_bytes_recv': 3751966720}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:53:10] Collected metrics: {'cpu_usage_percent': 46.2, 'memory_usage_percent': 83.3, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6845766656, 'network_bytes_recv': 3751980032}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:53:21] Collected metrics: {'cpu_usage_percent': 41.8, 'memory_usage_percent': 83.3, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6845983744, 'network_bytes_recv': 3751985152}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:53:32] Collected metrics: {'cpu_usage_percent': 38.1, 'memory_usage_percent': 83.2, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6846121984, 'network_bytes_recv': 3751999488}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:53:43] Collected metrics: {'cpu_usage_percent': 39.5, 'memory_usage_percent': 83.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6846200832, 'network_bytes_recv': 3752015872}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:53:54] Collected metrics: {'cpu_usage_percent': 48.0, 'memory_usage_percent': 83.2, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6846254080, 'network_bytes_recv': 3752023040}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:54:05] Collected metrics: {'cpu_usage_percent': 78.5, 'memory_usage_percent': 83.2, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6846329856, 'network_bytes_recv': 3752033280}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:54:16] Collected metrics: {'cpu_usage_percent': 51.1, 'memory_usage_percent': 83.2, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6846389248, 'network_bytes_recv': 3752050688}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:54:27] Collected metrics: {'cpu_usage_percent': 38.6, 'memory_usage_percent': 83.2, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6846447616, 'network_bytes_recv': 3752069120}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:54:38] Collected metrics: {'cpu_usage_percent': 27.6, 'memory_usage_percent': 83.2, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6846608384, 'network_bytes_recv': 3752077312}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:54:49] Collected metrics: {'cpu_usage_percent': 64.6, 'memory_usage_percent': 83.2, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6846696448, 'network_bytes_recv': 3752092672}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:55:00] Collected metrics: {'cpu_usage_percent': 59.1, 'memory_usage_percent': 83.2, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6846790656, 'network_bytes_recv': 3752111104}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:55:11] Collected metrics: {'cpu_usage_percent': 46.0, 'memory_usage_percent': 46.5, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6846898176, 'network_bytes_recv': 3752121344}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:55:22] Collected metrics: {'cpu_usage_percent': 33.7, 'memory_usage_percent': 50.8, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6846966784, 'network_bytes_recv': 3752136704}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:55:33] Collected metrics: {'cpu_usage_percent': 51.7, 'memory_usage_percent': 54.8, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6847175680, 'network_bytes_recv': 3752151040}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:55:44] Collected metrics: {'cpu_usage_percent': 39.2, 'memory_usage_percent': 56.9, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6847234048, 'network_bytes_recv': 3752163328}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:55:55] Collected metrics: {'cpu_usage_percent': 72.8, 'memory_usage_percent': 56.9, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6847310848, 'network_bytes_recv': 3752172544}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:56:06] Collected metrics: {'cpu_usage_percent': 28.3, 'memory_usage_percent': 60.2, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6847377408, 'network_bytes_recv': 3752185856}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:56:17] Collected metrics: {'cpu_usage_percent': 79.3, 'memory_usage_percent': 64.7, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6847450112, 'network_bytes_recv': 3752205312}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:56:28] Collected metrics: {'cpu_usage_percent': 36.6, 'memory_usage_percent': 65.2, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6847510528, 'network_bytes_recv': 3752219648}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:56:39] Collected metrics: {'cpu_usage_percent': 30.1, 'memory_usage_percent': 65.5, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6847634432, 'network_bytes_recv': 3752225792}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:56:50] Collected metrics: {'cpu_usage_percent': 27.4, 'memory_usage_percent': 65.9, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6847722496, 'network_bytes_recv': 3752241152}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:57:01] Collected metrics: {'cpu_usage_percent': 29.2, 'memory_usage_percent': 66.1, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6847748096, 'network_bytes_recv': 3752246272}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:57:12] Collected metrics: {'cpu_usage_percent': 33.0, 'memory_usage_percent': 68.2, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6848018432, 'network_bytes_recv': 3752260608}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:57:23] Collected metrics: {'cpu_usage_percent': 67.9, 'memory_usage_percent': 71.5, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6848109568, 'network_bytes_recv': 3752286208}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:57:34] Collected metrics: {'cpu_usage_percent': 100.0, 'memory_usage_percent': 71.6, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6854425600, 'network_bytes_recv': 3752296448}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:57:46] Collected metrics: {'cpu_usage_percent': 51.4, 'memory_usage_percent': 71.8, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6860907520, 'network_bytes_recv': 3752313856}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:57:57] Collected metrics: {'cpu_usage_percent': 40.6, 'memory_usage_percent': 71.8, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6861644800, 'network_bytes_recv': 3752328192}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:58:08] Collected metrics: {'cpu_usage_percent': 45.7, 'memory_usage_percent': 71.6, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6867307520, 'network_bytes_recv': 3752332288}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:58:19] Collected metrics: {'cpu_usage_percent': 37.9, 'memory_usage_percent': 71.6, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6867424256, 'network_bytes_recv': 3752348672}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:58:30] Collected metrics: {'cpu_usage_percent': 75.9, 'memory_usage_percent': 76.4, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6867605504, 'network_bytes_recv': 3752361984}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:58:41] Collected metrics: {'cpu_usage_percent': 100.0, 'memory_usage_percent': 77.5, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6867778560, 'network_bytes_recv': 3752384512}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:58:52] Collected metrics: {'cpu_usage_percent': 43.8, 'memory_usage_percent': 79.1, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6867889152, 'network_bytes_recv': 3752425472}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:59:03] Collected metrics: {'cpu_usage_percent': 41.5, 'memory_usage_percent': 77.3, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6867959808, 'network_bytes_recv': 3752450048}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:59:14] Collected metrics: {'cpu_usage_percent': 88.0, 'memory_usage_percent': 99.4, 'disk_usage_percent': 3.0, 'network_bytes_sent': 6868302848, 'network_bytes_recv': 3752668160}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:59:27] Collected metrics: {'cpu_usage_percent': 63.3, 'memory_usage_percent': 94.8, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6868459520, 'network_bytes_recv': 3752701952}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:59:38] Collected metrics: {'cpu_usage_percent': 74.7, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6868996096, 'network_bytes_recv': 3752795136}
+Successfully pushed to InfluxDB.
+[2026-06-02 15:59:49] Collected metrics: {'cpu_usage_percent': 74.9, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6869301248, 'network_bytes_recv': 3752803328}
+Successfully pushed to InfluxDB.
+[2026-06-02 16:00:00] Collected metrics: {'cpu_usage_percent': 50.6, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6870007808, 'network_bytes_recv': 3753197568}
+Successfully pushed to InfluxDB.
+[2026-06-02 16:00:11] Collected metrics: {'cpu_usage_percent': 35.9, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6870385664, 'network_bytes_recv': 3753328640}
+Successfully pushed to InfluxDB.
+[2026-06-02 16:00:22] Collected metrics: {'cpu_usage_percent': 39.6, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6870539264, 'network_bytes_recv': 3753338880}
+Successfully pushed to InfluxDB.
+[2026-06-02 16:00:33] Collected metrics: {'cpu_usage_percent': 41.3, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6870818816, 'network_bytes_recv': 3753367552}
+Successfully pushed to InfluxDB.
+[2026-06-02 16:00:44] Collected metrics: {'cpu_usage_percent': 54.4, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6870939648, 'network_bytes_recv': 3753392128}
+Successfully pushed to InfluxDB.
+[2026-06-02 16:00:56] Collected metrics: {'cpu_usage_percent': 35.9, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6871034880, 'network_bytes_recv': 3753410560}
+Successfully pushed to InfluxDB.
+[2026-06-02 16:01:07] Collected metrics: {'cpu_usage_percent': 59.2, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6871083008, 'network_bytes_recv': 3753418752}
+Successfully pushed to InfluxDB.
+[2026-06-02 16:01:18] Collected metrics: {'cpu_usage_percent': 50.8, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6871505920, 'network_bytes_recv': 3753734144}
+Successfully pushed to InfluxDB.
+[2026-06-02 16:01:29] Collected metrics: {'cpu_usage_percent': 37.2, 'memory_usage_percent': 94.6, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6871657472, 'network_bytes_recv': 3753771008}
+Successfully pushed to InfluxDB.
+[2026-06-02 16:01:40] Collected metrics: {'cpu_usage_percent': 38.6, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6872209408, 'network_bytes_recv': 3754192896}
+Successfully pushed to InfluxDB.
+[2026-06-02 16:01:51] Collected metrics: {'cpu_usage_percent': 59.9, 'memory_usage_percent': 95.0, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6872628224, 'network_bytes_recv': 3754546176}
+Successfully pushed to InfluxDB.
+[2026-06-02 16:02:02] Collected metrics: {'cpu_usage_percent': 48.5, 'memory_usage_percent': 94.7, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6873034752, 'network_bytes_recv': 3754888192}
+Successfully pushed to InfluxDB.
+[2026-06-02 16:02:13] Collected metrics: {'cpu_usage_percent': 91.1, 'memory_usage_percent': 95.1, 'disk_usage_percent': 3.1, 'network_bytes_sent': 6873338880, 'network_bytes_recv': 3755091968}
+Successfully pushed to InfluxDB.

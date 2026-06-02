@@ -1,0 +1,4 @@
+psutil
+influxdb-client
+python-dotenv
+scapy
