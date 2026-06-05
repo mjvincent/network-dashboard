@@ -1,46 +1,49 @@
 # Network Dashboard
 
-A modern, containerized dashboard for monitoring your home network and connected devices, including your Ubuntu server.
+A containerized home network monitoring stack centered on Grafana, Prometheus,
+Node Exporter, Telegraf ping checks, and an optional InfluxDB packet/protocol
+agent.
 
-## 🚀 Features
+## Services
 
-*   **Real-time Network Discovery:** Automatically detects active devices on your network (via Nmap).
-*   **Device Status:** Visual indicators for online/offline status and latency.
-*   **Ubuntu Server Integration:** Deep-dive metrics including CPU, RAM, Disk, and service status via SSH.
-*   **Responsive Interface:** Beautiful, mobile-friendly dashboard built with React and Tailwind CSS.
-*   **Dockerized Deployment:** Easy one-command setup on any platform using Docker Compose.
+* Grafana: `http://localhost:3001`
+* Prometheus: `http://localhost:9090`
+* InfluxDB: `http://localhost:8086`
+* Backend API: `http://localhost:8000`
+* React app: `http://localhost:3000`
 
-## 🛠️ Tech Stack
+## Known Device Monitoring
 
-*   **Backend:** Python (FastAPI)
-*   **Frontend:** React, Tailwind CSS, Shadcn/UI
-*   **Orchestration:** Docker, Docker Compose
-*   **Networking:** Nmap, Paramiko (SSH)
+Known devices are the source of truth for ping monitoring. Create your local
+inventory from the tracked example:
 
-## 📦 Getting Started
+```bash
+cp config/known_devices.example.yml config/known_devices.yml
+```
 
-### Prerequisites
+Edit `config/known_devices.yml` with your real home devices, then regenerate
+Telegraf's ping config:
 
-*   [Docker](https://docs.docker.com/get-docker/)
-*   [Docker Compose](https://docs.docker.com/compose/install/)
+```bash
+python3 scripts/generate_telegraf_config.py
+docker compose up -d --force-recreate telegraf
+```
 
-### Installation
+The generated `telegraf/telegraf.conf` exposes ping metrics with labels such as
+`device_name`, `role`, `criticality`, and `location`. Grafana uses those labels
+in the Home Network Overview dashboard.
 
-1.  Clone the repository:
-    ```bash
-    git clone https://github.com/mjvincent/network-dashboard.git
-    cd network-dashboard
-    ```
+Backend Nmap scanning remains available for exploration, but the primary
+Grafana inventory is the known-device YAML plus Telegraf ping metrics.
 
-2.  Create a `.env` file with your credentials (e.g., SSH keys/passwords for your server).
+## Getting Started
 
-3.  Start the application:
-    ```bash
-    docker-compose up -d
-    ```
+1. Copy `.env.example` to `.env` and set real local values.
+2. Copy `config/known_devices.example.yml` to `config/known_devices.yml`.
+3. Generate Telegraf config with `python3 scripts/generate_telegraf_config.py`.
+4. Start the stack with `docker compose up -d --build`.
 
-4.  Access the dashboard in your browser at `http://localhost:3000`.
+## Security
 
-## 🔒 Security
-
-This application uses your existing SSH credentials and network scanning capabilities. Always ensure that the `.env` file is kept secure and never committed to version control.
+Keep `.env` and `config/known_devices.yml` local. They are ignored so secrets
+and private home-network details do not get committed.
