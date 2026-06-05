@@ -229,7 +229,7 @@
             "type": "prometheus",
             "uid": "prometheus-ds"
           },
-          "expr": "sum by (device) (rate(node_network_receive_bytes_total{job=\"node-exporter\",device=\"eth0\"}[5m]))",
+          "expr": "sum by (device) (rate(node_network_receive_bytes_total{job=\"node-exporter\",device!~\"lo|docker.*|veth.*|br-.*\"}[5m]))",
           "legendFormat": "rx {{device}}",
           "refId": "A"
         },
@@ -238,7 +238,7 @@
             "type": "prometheus",
             "uid": "prometheus-ds"
           },
-          "expr": "sum by (device) (rate(node_network_transmit_bytes_total{job=\"node-exporter\",device=\"eth0\"}[5m]))",
+          "expr": "sum by (device) (rate(node_network_transmit_bytes_total{job=\"node-exporter\",device!~\"lo|docker.*|veth.*|br-.*\"}[5m]))",
           "legendFormat": "tx {{device}}",
           "refId": "B"
         }
@@ -281,7 +281,7 @@
             "uid": "prometheus-ds"
           },
           "expr": "ping_average_response_ms{job=\"telegraf\"}",
-          "legendFormat": "{{url}}",
+          "legendFormat": "{{device_name}} {{url}}",
           "refId": "A"
         }
       ],
@@ -313,7 +313,7 @@
             "uid": "prometheus-ds"
           },
           "expr": "ping_percent_packet_loss{job=\"telegraf\"}",
-          "legendFormat": "{{url}}",
+          "legendFormat": "{{device_name}} {{url}}",
           "refId": "A"
         }
       ],
@@ -377,12 +377,122 @@
             "uid": "prometheus-ds"
           },
           "expr": "1 - clamp_max(ping_result_code{job=\"telegraf\"}, 1)",
-          "legendFormat": "{{url}}",
+          "legendFormat": "{{device_name}} {{url}}",
           "refId": "A"
         }
       ],
-      "title": "Known Device Status",
+      "title": "Known Device Status (1 = Up)",
       "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 120
+              },
+              {
+                "color": "red",
+                "value": 300
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 24
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-ds"
+          },
+          "query": "from(bucket: \"network-metrics\")\n  |> range(start: -30m)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> last()\n  |> keep(columns: [\"_time\"])\n  |> group()\n  |> max(column: \"_time\")\n  |> map(fn: (r) => ({ r with _value: float(v: uint(v: now()) - uint(v: r._time)) / 1000000000.0 }))",
+          "queryType": "flux",
+          "refId": "A"
+        }
+      ],
+      "title": "Custom Agent Last Write Age",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 16,
+        "x": 8,
+        "y": 24
+      },
+      "id": 11,
+      "options": {
+        "displayMode": "gradient",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "valueMode": "color"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-ds"
+          },
+          "query": "from(bucket: \"network-metrics\")\n  |> range(start: -30m)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] =~ /^proto_/)\n  |> group(columns: [\"_field\"])\n  |> last()",
+          "queryType": "flux",
+          "refId": "A"
+        }
+      ],
+      "title": "Custom Agent Protocol Distribution",
+      "type": "bargauge"
     }
   ],
   "refresh": "15s",
@@ -403,6 +513,6 @@
   "timezone": "",
   "title": "Home Network Overview",
   "uid": "home-network-overview",
-  "version": 1,
+  "version": 3,
   "weekStart": ""
 }

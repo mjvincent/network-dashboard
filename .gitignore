@@ -26,6 +26,7 @@ yarn-error.log*
 *.log
 agent/agent.log
 backend/devices.db
+config/known_devices.yml
 
 # IDEs
 .vscode/

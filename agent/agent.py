@@ -3,7 +3,6 @@ import socket
 import time
 from datetime import datetime, timezone
 
-import psutil
 from dotenv import load_dotenv
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
@@ -18,6 +17,7 @@ INFLUXDB_ORG = os.getenv("INFLUXDB_ORG")
 INFLUXDB_BUCKET = os.getenv("INFLUXDB_BUCKET")
 COLLECTION_INTERVAL = int(os.getenv("COLLECTION_INTERVAL", "10"))
 ENABLE_PACKET_SNIFFER = os.getenv("ENABLE_PACKET_SNIFFER", "true").lower() == "true"
+START_TIME = time.time()
 
 
 def require_influx_config():
@@ -33,41 +33,18 @@ def require_influx_config():
         raise ValueError(f"Missing required InfluxDB configuration: {', '.join(missing)}")
 
 
-def calculate_rate(current, previous, attr, elapsed):
-    if previous is None or elapsed <= 0:
-        return 0.0
-    return max(0.0, (getattr(current, attr, 0) - getattr(previous, attr, 0)) / elapsed)
-
-
-def get_system_metrics(sniffer=None, previous_net=None, previous_disk=None, elapsed=0):
-    memory = psutil.virtual_memory()
-    disk = psutil.disk_usage("/")
-    net = psutil.net_io_counters()
-    disk_io = psutil.disk_io_counters()
-
+def get_custom_metrics(sniffer=None):
     metrics = {
-        "cpu_usage_percent": psutil.cpu_percent(interval=None),
-        "memory_usage_percent": memory.percent,
-        "disk_usage_percent": disk.percent,
-        "uptime_seconds": int(time.time() - psutil.boot_time()),
-        "process_count": len(psutil.pids()),
-        "network_bytes_sent_rate": calculate_rate(net, previous_net, "bytes_sent", elapsed),
-        "network_bytes_recv_rate": calculate_rate(net, previous_net, "bytes_recv", elapsed),
-        "network_packets_sent_rate": calculate_rate(net, previous_net, "packets_sent", elapsed),
-        "network_packets_recv_rate": calculate_rate(net, previous_net, "packets_recv", elapsed),
-        "network_dropin_rate": calculate_rate(net, previous_net, "dropin", elapsed),
-        "network_dropout_rate": calculate_rate(net, previous_net, "dropout", elapsed),
-        "disk_io_read_bytes_rate": calculate_rate(disk_io, previous_disk, "read_bytes", elapsed),
-        "disk_io_write_bytes_rate": calculate_rate(disk_io, previous_disk, "write_bytes", elapsed),
+        "agent_uptime_seconds": int(time.time() - START_TIME),
     }
 
     if sniffer:
         sniffer_metrics = sniffer.get_metrics()
         for protocol, count in sniffer_metrics.get("protocols", {}).items():
-            metrics[f"proto_{protocol}"] = float(count)
-        metrics["discovered_devices"] = float(len(sniffer_metrics.get("seen_ips", [])))
+            metrics[f"proto_{protocol}"] = int(count)
+        metrics["seen_ip_count"] = int(len(sniffer_metrics.get("seen_ips", [])))
 
-    return metrics, net, disk_io
+    return metrics
 
 
 def push_to_influxdb(write_api, metrics):
@@ -100,22 +77,10 @@ def main():
             print(f"Packet sniffer disabled after startup failure: {exc}")
             sniffer = None
 
-    previous_net = psutil.net_io_counters()
-    previous_disk = psutil.disk_io_counters()
-    previous_time = time.monotonic()
-
     try:
         while True:
             time.sleep(COLLECTION_INTERVAL)
-            now = time.monotonic()
-            elapsed = now - previous_time
-            metrics, previous_net, previous_disk = get_system_metrics(
-                sniffer=sniffer,
-                previous_net=previous_net,
-                previous_disk=previous_disk,
-                elapsed=elapsed,
-            )
-            previous_time = now
+            metrics = get_custom_metrics(sniffer=sniffer)
 
             try:
                 push_to_influxdb(write_api, metrics)

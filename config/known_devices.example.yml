@@ -1,0 +1,36 @@
+devices:
+  - name: Gateway
+    role: router
+    ip: 192.168.68.1
+    monitor: ping
+    notes: Primary home network gateway.
+
+  - name: Ubuntu Server
+    role: server
+    ip: 192.168.68.85
+    monitor: ping
+    notes: Docker host monitored deeply by node_exporter.
+
+  - name: Docker Host Bridge
+    role: docker-host
+    ip: host.docker.internal
+    monitor: ping
+    notes: Docker Desktop route back to the host.
+
+  - name: Node Exporter
+    role: exporter
+    ip: node-exporter
+    monitor: ping
+    notes: Internal Docker DNS name for the host metrics exporter.
+
+  - name: Cloudflare DNS
+    role: internet-check
+    ip: 1.1.1.1
+    monitor: ping
+    notes: External reachability and latency baseline.
+
+  - name: Google DNS
+    role: internet-check
+    ip: 8.8.8.8
+    monitor: ping
+    notes: Secondary external reachability baseline.
