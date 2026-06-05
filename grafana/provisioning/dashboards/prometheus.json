@@ -637,7 +637,23 @@
               "text": "detail__map_group",
               "type": "string"
             }
-          ]
+          ],
+          "url_options": {
+            "method": "GET",
+            "url": "/topology/nodes",
+            "data": "",
+            "params": [],
+            "headers": [],
+            "body_type": "raw",
+            "body_content_type": "application/json"
+          },
+          "source_options": {
+            "url": "/topology/nodes",
+            "method": "GET"
+          },
+          "parser_options": {
+            "type": "json"
+          }
         },
         {
           "refId": "B",
@@ -688,7 +704,23 @@
               "text": "detail__target_device",
               "type": "string"
             }
-          ]
+          ],
+          "url_options": {
+            "method": "GET",
+            "url": "/topology/edges",
+            "data": "",
+            "params": [],
+            "headers": [],
+            "body_type": "raw",
+            "body_content_type": "application/json"
+          },
+          "source_options": {
+            "url": "/topology/edges",
+            "method": "GET"
+          },
+          "parser_options": {
+            "type": "json"
+          }
         }
       ]
     },
@@ -746,7 +778,23 @@
               "text": "known",
               "type": "number"
             }
-          ]
+          ],
+          "url_options": {
+            "method": "GET",
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "data": "",
+            "params": [],
+            "headers": [],
+            "body_type": "raw",
+            "body_content_type": "application/json"
+          },
+          "source_options": {
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "method": "GET"
+          },
+          "parser_options": {
+            "type": "json"
+          }
         }
       ]
     },
@@ -804,7 +852,23 @@
               "text": "discovered",
               "type": "number"
             }
-          ]
+          ],
+          "url_options": {
+            "method": "GET",
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "data": "",
+            "params": [],
+            "headers": [],
+            "body_type": "raw",
+            "body_content_type": "application/json"
+          },
+          "source_options": {
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "method": "GET"
+          },
+          "parser_options": {
+            "type": "json"
+          }
         }
       ]
     },
@@ -862,7 +926,23 @@
               "text": "online",
               "type": "number"
             }
-          ]
+          ],
+          "url_options": {
+            "method": "GET",
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "data": "",
+            "params": [],
+            "headers": [],
+            "body_type": "raw",
+            "body_content_type": "application/json"
+          },
+          "source_options": {
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "method": "GET"
+          },
+          "parser_options": {
+            "type": "json"
+          }
         }
       ]
     },
@@ -920,7 +1000,23 @@
               "text": "offline",
               "type": "number"
             }
-          ]
+          ],
+          "url_options": {
+            "method": "GET",
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "data": "",
+            "params": [],
+            "headers": [],
+            "body_type": "raw",
+            "body_content_type": "application/json"
+          },
+          "source_options": {
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "method": "GET"
+          },
+          "parser_options": {
+            "type": "json"
+          }
         }
       ]
     },
@@ -978,7 +1074,23 @@
               "text": "unknown",
               "type": "number"
             }
-          ]
+          ],
+          "url_options": {
+            "method": "GET",
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "data": "",
+            "params": [],
+            "headers": [],
+            "body_type": "raw",
+            "body_content_type": "application/json"
+          },
+          "source_options": {
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "method": "GET"
+          },
+          "parser_options": {
+            "type": "json"
+          }
         }
       ]
     },
@@ -1036,7 +1148,23 @@
               "text": "unused",
               "type": "number"
             }
-          ]
+          ],
+          "url_options": {
+            "method": "GET",
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "data": "",
+            "params": [],
+            "headers": [],
+            "body_type": "raw",
+            "body_content_type": "application/json"
+          },
+          "source_options": {
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "method": "GET"
+          },
+          "parser_options": {
+            "type": "json"
+          }
         }
       ]
     },
@@ -1727,6 +1855,6 @@
   "timezone": "",
   "title": "Home Network Overview",
   "uid": "home-network-overview",
-  "version": 8,
+  "version": 9,
   "weekStart": ""
 }
