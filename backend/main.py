@@ -4,10 +4,10 @@ import sqlite3
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, Response
 from influxdb_client import InfluxDBClient
-from prometheus_client import CONTENT_TYPE_LATEST, Gauge, generate_latest
+from prometheus_client import CONTENT_TYPE_LATEST, Gauge, Info, generate_latest
 
 from registry import DeviceRegistry
-from scanner import NetworkScanner
+from scanner import NetworkScanner, UnreliableScanResult
 
 load_dotenv()
 
@@ -21,6 +21,16 @@ app = FastAPI(title="Network Dashboard API")
 scanner = NetworkScanner()
 registry = DeviceRegistry()
 device_total_gauge = Gauge("network_dashboard_devices_total", "Registered devices by status", ["status"])
+device_up_gauge = Gauge(
+    "network_dashboard_device_up",
+    "Merged device inventory up status",
+    ["ip", "hostname", "mac", "vendor", "role", "location", "criticality", "source"],
+)
+device_info = Info(
+    "network_dashboard_device",
+    "Merged device inventory metadata",
+    ["ip", "hostname", "mac", "vendor", "role", "location", "criticality", "source"],
+)
 
 
 @app.get("/")
@@ -40,6 +50,8 @@ async def scan(network_range: str = SCAN_RANGE):
         devices = await scanner.scan_network(network_range)
         registry.update_devices(devices)
         return {"network_range": network_range, "devices": devices}
+    except UnreliableScanResult as exc:
+        raise HTTPException(status_code=502, detail=str(exc)) from exc
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
 
@@ -104,8 +116,24 @@ async def get_latest_influx_metrics():
 @app.get("/prometheus")
 async def prometheus_metrics():
     devices = registry.get_all_devices()
-    online = sum(1 for device in devices if device.get("status") == "online")
-    offline = len(devices) - online
+    online = sum(1 for device in devices if device.get("status") in {"online", "known"})
+    offline = sum(1 for device in devices if device.get("status") == "offline")
     device_total_gauge.labels(status="online").set(online)
     device_total_gauge.labels(status="offline").set(offline)
+
+    for device in devices:
+        labels = {
+            "ip": str(device.get("ip") or ""),
+            "hostname": str(device.get("hostname") or ""),
+            "mac": str(device.get("mac") or ""),
+            "vendor": str(device.get("vendor") or "Unknown"),
+            "role": str(device.get("role") or "unknown"),
+            "location": str(device.get("location") or "unknown"),
+            "criticality": str(device.get("criticality") or "standard"),
+            "source": str(device.get("source") or "unknown"),
+        }
+        status = str(device.get("status") or "").lower()
+        device_up_gauge.labels(**labels).set(1 if status in {"online", "known"} else 0)
+        device_info.labels(**labels).info({"status": status or "unknown"})
+
     return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)

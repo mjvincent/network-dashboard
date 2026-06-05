@@ -36,6 +36,24 @@ in the Home Network Overview dashboard.
 Backend Nmap scanning remains available for exploration, but the primary
 Grafana inventory is the known-device YAML plus Telegraf ping metrics.
 
+## Ubuntu Server Metrics
+
+The Ubuntu Server panels expect node_exporter to run directly on the Ubuntu
+host at `192.168.68.85:9100`. On the Ubuntu server, run node_exporter with your
+preferred package/service manager or with Docker:
+
+```bash
+docker run -d --name node-exporter --restart unless-stopped \
+  --net host --pid host \
+  -v /:/host:ro,rslave \
+  prom/node-exporter:latest \
+  --path.rootfs=/host
+```
+
+Prometheus scrapes this as the `ubuntu-node-exporter` job. The local
+`node-exporter` container remains useful for Docker-host/internal visibility,
+but it is no longer used for Ubuntu Server disk panels.
+
 ## Alerts
 
 Grafana alert rules are provisioned from

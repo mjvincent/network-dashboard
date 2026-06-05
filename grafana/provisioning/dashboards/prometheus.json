@@ -28,7 +28,7 @@
       },
       "fieldConfig": {
         "defaults": {
-          "unit": "percentunit"
+          "unit": "percent"
         },
         "overrides": []
       },
@@ -57,8 +57,8 @@
             "type": "prometheus",
             "uid": "prometheus-ds"
           },
-          "expr": "1 - avg by (instance) (rate(node_cpu_seconds_total{job=\"node-exporter\",mode=\"idle\"}[5m]))",
-          "legendFormat": "{{instance}}",
+          "expr": "100 * (1 - avg by (instance) (rate(node_cpu_seconds_total{job=\"ubuntu-node-exporter\",mode=\"idle\"}[5m])))",
+          "legendFormat": "Ubuntu {{instance}}",
           "refId": "A"
         }
       ],
@@ -72,7 +72,7 @@
       },
       "fieldConfig": {
         "defaults": {
-          "unit": "percentunit"
+          "unit": "percent"
         },
         "overrides": []
       },
@@ -101,8 +101,8 @@
             "type": "prometheus",
             "uid": "prometheus-ds"
           },
-          "expr": "1 - (node_memory_MemAvailable_bytes{job=\"node-exporter\"} / node_memory_MemTotal_bytes{job=\"node-exporter\"})",
-          "legendFormat": "{{instance}}",
+          "expr": "100 * (1 - (node_memory_MemAvailable_bytes{job=\"ubuntu-node-exporter\"} / node_memory_MemTotal_bytes{job=\"ubuntu-node-exporter\"}))",
+          "legendFormat": "Ubuntu {{instance}}",
           "refId": "A"
         }
       ],
@@ -116,7 +116,7 @@
       },
       "fieldConfig": {
         "defaults": {
-          "unit": "percentunit"
+          "unit": "percent"
         },
         "overrides": []
       },
@@ -145,12 +145,12 @@
             "type": "prometheus",
             "uid": "prometheus-ds"
           },
-          "expr": "max by (instance) (1 - (node_filesystem_avail_bytes{job=\"node-exporter\",fstype!~\"tmpfs|overlay\"} / node_filesystem_size_bytes{job=\"node-exporter\",fstype!~\"tmpfs|overlay\"}))",
-          "legendFormat": "{{instance}}",
+          "expr": "100 * (1 - (sum(node_filesystem_avail_bytes{job=\"ubuntu-node-exporter\",fstype!~\"tmpfs|overlay|squashfs|devtmpfs|proc|sysfs|cgroup.*|nsfs|autofs\",mountpoint!~\"^/(run|sys|proc|dev)($|/)\"}) / sum(node_filesystem_size_bytes{job=\"ubuntu-node-exporter\",fstype!~\"tmpfs|overlay|squashfs|devtmpfs|proc|sysfs|cgroup.*|nsfs|autofs\",mountpoint!~\"^/(run|sys|proc|dev)($|/)\"})))",
+          "legendFormat": "Ubuntu total",
           "refId": "A"
         }
       ],
-      "title": "Ubuntu Server Disk Usage",
+      "title": "Ubuntu Server Total Disk Usage",
       "type": "gauge"
     },
     {
@@ -187,8 +187,8 @@
             "type": "prometheus",
             "uid": "prometheus-ds"
           },
-          "expr": "time() - node_boot_time_seconds{job=\"node-exporter\"}",
-          "legendFormat": "{{instance}}",
+          "expr": "time() - node_boot_time_seconds{job=\"ubuntu-node-exporter\"}",
+          "legendFormat": "Ubuntu {{instance}}",
           "refId": "A"
         }
       ],
@@ -229,8 +229,8 @@
             "type": "prometheus",
             "uid": "prometheus-ds"
           },
-          "expr": "sum by (device) (rate(node_network_receive_bytes_total{job=\"node-exporter\",device!~\"lo|docker.*|veth.*|br-.*\"}[5m]))",
-          "legendFormat": "rx {{device}}",
+          "expr": "sum by (device) (rate(node_network_receive_bytes_total{job=\"ubuntu-node-exporter\",device!~\"lo|docker.*|veth.*|br-.*\"}[5m]))",
+          "legendFormat": "Ubuntu rx {{device}}",
           "refId": "A"
         },
         {
@@ -238,8 +238,8 @@
             "type": "prometheus",
             "uid": "prometheus-ds"
           },
-          "expr": "sum by (device) (rate(node_network_transmit_bytes_total{job=\"node-exporter\",device!~\"lo|docker.*|veth.*|br-.*\"}[5m]))",
-          "legendFormat": "tx {{device}}",
+          "expr": "sum by (device) (rate(node_network_transmit_bytes_total{job=\"ubuntu-node-exporter\",device!~\"lo|docker.*|veth.*|br-.*\"}[5m]))",
+          "legendFormat": "Ubuntu tx {{device}}",
           "refId": "B"
         }
       ],
@@ -630,6 +630,224 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 32
+      },
+      "id": 16,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "100 * (1 - (sum(node_filesystem_avail_bytes{job=\"node-exporter\",fstype=\"ext4\"}) / sum(node_filesystem_size_bytes{job=\"node-exporter\",fstype=\"ext4\"})))",
+          "legendFormat": "Docker host ext4",
+          "refId": "A"
+        }
+      ],
+      "title": "Docker Host Disk Usage",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Size"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "bytes"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Available"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "bytes"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 18,
+        "x": 6,
+        "y": 32
+      },
+      "id": 17,
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Used %"
+          }
+        ]
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "100 * (1 - (node_filesystem_avail_bytes{job=\"ubuntu-node-exporter\",fstype!~\"tmpfs|overlay|squashfs|devtmpfs|proc|sysfs|cgroup.*|nsfs|autofs\",mountpoint!~\"^/(run|sys|proc|dev)($|/)\"} / node_filesystem_size_bytes{job=\"ubuntu-node-exporter\",fstype!~\"tmpfs|overlay|squashfs|devtmpfs|proc|sysfs|cgroup.*|nsfs|autofs\",mountpoint!~\"^/(run|sys|proc|dev)($|/)\"}))",
+          "format": "table",
+          "instant": true,
+          "legendFormat": "{{mountpoint}}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "node_filesystem_size_bytes{job=\"ubuntu-node-exporter\",fstype!~\"tmpfs|overlay|squashfs|devtmpfs|proc|sysfs|cgroup.*|nsfs|autofs\",mountpoint!~\"^/(run|sys|proc|dev)($|/)\"}",
+          "format": "table",
+          "instant": true,
+          "legendFormat": "{{mountpoint}}",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "node_filesystem_avail_bytes{job=\"ubuntu-node-exporter\",fstype!~\"tmpfs|overlay|squashfs|devtmpfs|proc|sysfs|cgroup.*|nsfs|autofs\",mountpoint!~\"^/(run|sys|proc|dev)($|/)\"}",
+          "format": "table",
+          "instant": true,
+          "legendFormat": "{{mountpoint}}",
+          "refId": "C"
+        }
+      ],
+      "title": "Ubuntu Server Filesystems",
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {
+            "byField": "mountpoint"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time 1": true,
+              "Time 2": true,
+              "Time 3": true,
+              "instance": true,
+              "job": true
+            },
+            "renameByName": {
+              "Value #A": "Used %",
+              "Value #B": "Size",
+              "Value #C": "Available"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 40
+      },
+      "id": 18,
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "ip"
+          }
+        ]
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "network_dashboard_device_up",
+          "format": "table",
+          "instant": true,
+          "legendFormat": "{{ip}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Network Device Inventory",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "__name__": true,
+              "instance": true,
+              "job": true
+            },
+            "renameByName": {
+              "Value": "Up"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
         "type": "influxdb",
         "uid": "influxdb-ds"
       },
@@ -660,7 +878,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 32
+        "y": 48
       },
       "id": 10,
       "options": {
@@ -706,7 +924,7 @@
         "h": 8,
         "w": 16,
         "x": 8,
-        "y": 32
+        "y": 48
       },
       "id": 11,
       "options": {
@@ -757,6 +975,6 @@
   "timezone": "",
   "title": "Home Network Overview",
   "uid": "home-network-overview",
-  "version": 4,
+  "version": 5,
   "weekStart": ""
 }

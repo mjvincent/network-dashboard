@@ -1,6 +1,11 @@
 import asyncio
+import ipaddress
 
 import nmap
+
+
+class UnreliableScanResult(Exception):
+    pass
 
 
 class NetworkScanner:
@@ -13,9 +18,14 @@ class NetworkScanner:
 
     def _run_scan(self, network_range: str):
         devices = []
+        network = ipaddress.ip_network(network_range, strict=False)
         self.nm.scan(hosts=network_range, arguments="-sn")
 
         for host in self.nm.all_hosts():
+            ip = ipaddress.ip_address(host)
+            if ip == network.network_address or ip == network.broadcast_address:
+                continue
+
             hostname = self.nm[host].hostname() or ""
             addresses = self.nm[host].get("addresses", {})
             vendors = self.nm[host].get("vendor", {})
@@ -28,6 +38,12 @@ class NetworkScanner:
                 "vendor": vendors.get(mac, "Unknown") if mac else "Unknown",
                 "status": self.nm[host].state() or "unknown",
             })
+
+        usable_hosts = max(1, network.num_addresses - 2)
+        if usable_hosts >= 32 and len(devices) / usable_hosts > 0.75:
+            raise UnreliableScanResult(
+                f"Scan reported {len(devices)} of {usable_hosts} hosts up; refusing likely false-positive discovery result"
+            )
 
         return devices
 
