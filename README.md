@@ -36,6 +36,21 @@ in the Home Network Overview dashboard.
 Backend Nmap scanning remains available for exploration, but the primary
 Grafana inventory is the known-device YAML plus Telegraf ping metrics.
 
+## Alerts
+
+Grafana alert rules are provisioned from
+`grafana/provisioning/alerting/home-network.yml`. Current rules cover:
+
+* known devices down
+* critical known devices down
+* packet loss above 5%
+* LAN or Docker latency above 75 ms
+* core monitoring targets down
+
+The rules are intentionally committed without notification contact points.
+Add local notification routes later for email, Slack, Discord, Pushover, or
+another private destination.
+
 ## Getting Started
 
 1. Copy `.env.example` to `.env` and set real local values.
