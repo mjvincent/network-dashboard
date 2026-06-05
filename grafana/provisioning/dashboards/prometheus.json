@@ -1,0 +1,1860 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "id": 19,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "100 * (1 - avg by (instance) (rate(node_cpu_seconds_total{job=\"macbook-node-exporter\",mode=\"idle\"}[5m])))",
+          "legendFormat": "MacBook",
+          "refId": "A"
+        }
+      ],
+      "title": "MacBook Pro CPU Usage",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 6,
+        "y": 0
+      },
+      "id": 20,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "100 * ((node_memory_active_bytes{job=\"macbook-node-exporter\"} + node_memory_wired_bytes{job=\"macbook-node-exporter\"} + node_memory_compressed_bytes{job=\"macbook-node-exporter\"}) / node_memory_total_bytes{job=\"macbook-node-exporter\"})",
+          "legendFormat": "MacBook",
+          "refId": "A"
+        }
+      ],
+      "title": "MacBook Pro Memory Usage",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 12,
+        "y": 0
+      },
+      "id": 21,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "100 * (1 - (node_filesystem_avail_bytes{job=\"macbook-node-exporter\",mountpoint=\"/System/Volumes/Data\"} / node_filesystem_size_bytes{job=\"macbook-node-exporter\",mountpoint=\"/System/Volumes/Data\"}))",
+          "legendFormat": "MacBook",
+          "refId": "A"
+        }
+      ],
+      "title": "MacBook Pro Disk Usage",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "id": 22,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "node_power_supply_current_capacity{job=\"macbook-node-exporter\",power_supply=\"InternalBattery-0\"}",
+          "legendFormat": "MacBook",
+          "refId": "A"
+        }
+      ],
+      "title": "MacBook Pro Battery",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "Bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 8
+      },
+      "id": 23,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "sum by (device) (rate(node_network_receive_bytes_total{job=\"macbook-node-exporter\",device!~\"lo.*|utun.*|awdl.*|llw.*|bridge.*|anpi.*\"}[5m]))",
+          "legendFormat": "Mac rx {{device}}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "sum by (device) (rate(node_network_transmit_bytes_total{job=\"macbook-node-exporter\",device!~\"lo.*|utun.*|awdl.*|llw.*|bridge.*|anpi.*\"}[5m]))",
+          "legendFormat": "Mac tx {{device}}",
+          "refId": "B"
+        }
+      ],
+      "title": "MacBook Pro Network I/O",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 16
+      },
+      "id": 1,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "100 * (1 - avg by (instance) (rate(node_cpu_seconds_total{job=\"ubuntu-node-exporter\",mode=\"idle\"}[5m])))",
+          "legendFormat": "Ubuntu {{instance}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Ubuntu Server CPU Usage",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 6,
+        "y": 16
+      },
+      "id": 2,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "100 * (1 - (node_memory_MemAvailable_bytes{job=\"ubuntu-node-exporter\"} / node_memory_MemTotal_bytes{job=\"ubuntu-node-exporter\"}))",
+          "legendFormat": "Ubuntu {{instance}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Ubuntu Server Memory Usage",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 12,
+        "y": 16
+      },
+      "id": 3,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "100 * (1 - (sum(node_filesystem_avail_bytes{job=\"ubuntu-node-exporter\",fstype!~\"tmpfs|overlay|squashfs|devtmpfs|proc|sysfs|cgroup.*|nsfs|autofs\",mountpoint!~\"^/(run|sys|proc|dev)($|/)\"}) / sum(node_filesystem_size_bytes{job=\"ubuntu-node-exporter\",fstype!~\"tmpfs|overlay|squashfs|devtmpfs|proc|sysfs|cgroup.*|nsfs|autofs\",mountpoint!~\"^/(run|sys|proc|dev)($|/)\"})))",
+          "legendFormat": "Ubuntu total",
+          "refId": "A"
+        }
+      ],
+      "title": "Ubuntu Server Total Disk Usage",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 18,
+        "y": 16
+      },
+      "id": 4,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "time() - node_boot_time_seconds{job=\"ubuntu-node-exporter\"}",
+          "legendFormat": "Ubuntu {{instance}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Ubuntu Server Uptime",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "Bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 24
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "sum by (device) (rate(node_network_receive_bytes_total{job=\"ubuntu-node-exporter\",device!~\"lo|docker.*|veth.*|br-.*\"}[5m]))",
+          "legendFormat": "Ubuntu rx {{device}}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "sum by (device) (rate(node_network_transmit_bytes_total{job=\"ubuntu-node-exporter\",device!~\"lo|docker.*|veth.*|br-.*\"}[5m]))",
+          "legendFormat": "Ubuntu tx {{device}}",
+          "refId": "B"
+        }
+      ],
+      "title": "Ubuntu Server Network I/O",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 24
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "ping_average_response_ms{job=\"telegraf\"}",
+          "legendFormat": "{{device_name}} {{url}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Known Device Latency",
+      "type": "timeseries"
+    },
+    {
+      "id": 24,
+      "type": "nodeGraph",
+      "title": "Network Map",
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "infinity-ds"
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 32
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "options": {
+        "nodes": {},
+        "edges": {}
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "infinity-ds"
+          },
+          "type": "json",
+          "source": "url",
+          "url": "/topology/nodes",
+          "method": "GET",
+          "parser": "backend",
+          "root_selector": "nodes",
+          "format": "node-graph-nodes",
+          "columns": [
+            {
+              "selector": "id",
+              "text": "id",
+              "type": "string"
+            },
+            {
+              "selector": "title",
+              "text": "title",
+              "type": "string"
+            },
+            {
+              "selector": "subTitle",
+              "text": "subTitle",
+              "type": "string"
+            },
+            {
+              "selector": "mainStat",
+              "text": "mainStat",
+              "type": "string"
+            },
+            {
+              "selector": "secondaryStat",
+              "text": "secondaryStat",
+              "type": "string"
+            },
+            {
+              "selector": "arc__up",
+              "text": "arc__up",
+              "type": "number"
+            },
+            {
+              "selector": "arc__down",
+              "text": "arc__down",
+              "type": "number"
+            },
+            {
+              "selector": "arc__up_color",
+              "text": "arc__up_color",
+              "type": "string"
+            },
+            {
+              "selector": "arc__down_color",
+              "text": "arc__down_color",
+              "type": "string"
+            },
+            {
+              "selector": "detail__ip",
+              "text": "detail__ip",
+              "type": "string"
+            },
+            {
+              "selector": "detail__status",
+              "text": "detail__status",
+              "type": "string"
+            },
+            {
+              "selector": "detail__role",
+              "text": "detail__role",
+              "type": "string"
+            },
+            {
+              "selector": "detail__location",
+              "text": "detail__location",
+              "type": "string"
+            },
+            {
+              "selector": "detail__criticality",
+              "text": "detail__criticality",
+              "type": "string"
+            },
+            {
+              "selector": "detail__source",
+              "text": "detail__source",
+              "type": "string"
+            },
+            {
+              "selector": "detail__zone",
+              "text": "detail__zone",
+              "type": "string"
+            },
+            {
+              "selector": "detail__map_group",
+              "text": "detail__map_group",
+              "type": "string"
+            }
+          ],
+          "url_options": {
+            "method": "GET",
+            "url": "/topology/nodes",
+            "data": "",
+            "params": [],
+            "headers": [],
+            "body_type": "raw",
+            "body_content_type": "application/json"
+          },
+          "source_options": {
+            "url": "/topology/nodes",
+            "method": "GET"
+          },
+          "parser_options": {
+            "type": "json"
+          }
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "infinity-ds"
+          },
+          "type": "json",
+          "source": "url",
+          "url": "/topology/edges",
+          "method": "GET",
+          "parser": "backend",
+          "root_selector": "edges",
+          "format": "node-graph-edges",
+          "columns": [
+            {
+              "selector": "id",
+              "text": "id",
+              "type": "string"
+            },
+            {
+              "selector": "source",
+              "text": "source",
+              "type": "string"
+            },
+            {
+              "selector": "target",
+              "text": "target",
+              "type": "string"
+            },
+            {
+              "selector": "mainStat",
+              "text": "mainStat",
+              "type": "string"
+            },
+            {
+              "selector": "secondaryStat",
+              "text": "secondaryStat",
+              "type": "string"
+            },
+            {
+              "selector": "detail__source_device",
+              "text": "detail__source_device",
+              "type": "string"
+            },
+            {
+              "selector": "detail__target_device",
+              "text": "detail__target_device",
+              "type": "string"
+            }
+          ],
+          "url_options": {
+            "method": "GET",
+            "url": "/topology/edges",
+            "data": "",
+            "params": [],
+            "headers": [],
+            "body_type": "raw",
+            "body_content_type": "application/json"
+          },
+          "source_options": {
+            "url": "/topology/edges",
+            "method": "GET"
+          },
+          "parser_options": {
+            "type": "json"
+          }
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "type": "stat",
+      "title": "LAN Known IPs",
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "infinity-ds"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 0,
+        "y": 44
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "infinity-ds"
+          },
+          "type": "json",
+          "source": "url",
+          "url": "/network/utilization?network_range=192.168.68.0/24",
+          "method": "GET",
+          "parser": "backend",
+          "root_selector": "summary",
+          "format": "table",
+          "columns": [
+            {
+              "selector": "known",
+              "text": "known",
+              "type": "number"
+            }
+          ],
+          "url_options": {
+            "method": "GET",
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "data": "",
+            "params": [],
+            "headers": [],
+            "body_type": "raw",
+            "body_content_type": "application/json"
+          },
+          "source_options": {
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "method": "GET"
+          },
+          "parser_options": {
+            "type": "json"
+          }
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "type": "stat",
+      "title": "LAN Discovered IPs",
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "infinity-ds"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 4,
+        "y": 44
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "infinity-ds"
+          },
+          "type": "json",
+          "source": "url",
+          "url": "/network/utilization?network_range=192.168.68.0/24",
+          "method": "GET",
+          "parser": "backend",
+          "root_selector": "summary",
+          "format": "table",
+          "columns": [
+            {
+              "selector": "discovered",
+              "text": "discovered",
+              "type": "number"
+            }
+          ],
+          "url_options": {
+            "method": "GET",
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "data": "",
+            "params": [],
+            "headers": [],
+            "body_type": "raw",
+            "body_content_type": "application/json"
+          },
+          "source_options": {
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "method": "GET"
+          },
+          "parser_options": {
+            "type": "json"
+          }
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "type": "stat",
+      "title": "LAN Online IPs",
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "infinity-ds"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 8,
+        "y": 44
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "infinity-ds"
+          },
+          "type": "json",
+          "source": "url",
+          "url": "/network/utilization?network_range=192.168.68.0/24",
+          "method": "GET",
+          "parser": "backend",
+          "root_selector": "summary",
+          "format": "table",
+          "columns": [
+            {
+              "selector": "online",
+              "text": "online",
+              "type": "number"
+            }
+          ],
+          "url_options": {
+            "method": "GET",
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "data": "",
+            "params": [],
+            "headers": [],
+            "body_type": "raw",
+            "body_content_type": "application/json"
+          },
+          "source_options": {
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "method": "GET"
+          },
+          "parser_options": {
+            "type": "json"
+          }
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "type": "stat",
+      "title": "LAN Offline IPs",
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "infinity-ds"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 12,
+        "y": 44
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "infinity-ds"
+          },
+          "type": "json",
+          "source": "url",
+          "url": "/network/utilization?network_range=192.168.68.0/24",
+          "method": "GET",
+          "parser": "backend",
+          "root_selector": "summary",
+          "format": "table",
+          "columns": [
+            {
+              "selector": "offline",
+              "text": "offline",
+              "type": "number"
+            }
+          ],
+          "url_options": {
+            "method": "GET",
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "data": "",
+            "params": [],
+            "headers": [],
+            "body_type": "raw",
+            "body_content_type": "application/json"
+          },
+          "source_options": {
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "method": "GET"
+          },
+          "parser_options": {
+            "type": "json"
+          }
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "type": "stat",
+      "title": "LAN Unknown IPs",
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "infinity-ds"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 16,
+        "y": 44
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "infinity-ds"
+          },
+          "type": "json",
+          "source": "url",
+          "url": "/network/utilization?network_range=192.168.68.0/24",
+          "method": "GET",
+          "parser": "backend",
+          "root_selector": "summary",
+          "format": "table",
+          "columns": [
+            {
+              "selector": "unknown",
+              "text": "unknown",
+              "type": "number"
+            }
+          ],
+          "url_options": {
+            "method": "GET",
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "data": "",
+            "params": [],
+            "headers": [],
+            "body_type": "raw",
+            "body_content_type": "application/json"
+          },
+          "source_options": {
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "method": "GET"
+          },
+          "parser_options": {
+            "type": "json"
+          }
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "type": "stat",
+      "title": "LAN Unused IPs",
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "infinity-ds"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 20,
+        "y": 44
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "infinity-ds"
+          },
+          "type": "json",
+          "source": "url",
+          "url": "/network/utilization?network_range=192.168.68.0/24",
+          "method": "GET",
+          "parser": "backend",
+          "root_selector": "summary",
+          "format": "table",
+          "columns": [
+            {
+              "selector": "unused",
+              "text": "unused",
+              "type": "number"
+            }
+          ],
+          "url_options": {
+            "method": "GET",
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "data": "",
+            "params": [],
+            "headers": [],
+            "body_type": "raw",
+            "body_content_type": "application/json"
+          },
+          "source_options": {
+            "url": "/network/utilization?network_range=192.168.68.0/24",
+            "method": "GET"
+          },
+          "parser_options": {
+            "type": "json"
+          }
+        }
+      ]
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 52
+      },
+      "id": 7,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "ping_percent_packet_loss{job=\"telegraf\"}",
+          "legendFormat": "{{device_name}} {{url}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Known Device Packet Loss",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 52
+      },
+      "id": 8,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "up",
+          "legendFormat": "{{job}} {{instance}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Monitoring Service Health",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 52
+      },
+      "id": 9,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "1 - clamp_max(ping_result_code{job=\"telegraf\"}, 1)",
+          "legendFormat": "{{device_name}} {{url}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Known Device Status (1 = Up)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "type": "stat",
+      "id": 12,
+      "title": "Known Devices Down",
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 60
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "sum(clamp_max(ping_result_code{job=\"telegraf\"}, 1))",
+          "legendFormat": "{{device_name}}",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "type": "stat",
+      "id": 13,
+      "title": "Critical Devices Down",
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 6,
+        "y": 60
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "sum(clamp_max(ping_result_code{job=\"telegraf\",criticality=\"critical\"}, 1))",
+          "legendFormat": "{{device_name}}",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ms",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 75
+              },
+              {
+                "color": "red",
+                "value": 150
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "type": "stat",
+      "id": 14,
+      "title": "Worst Known Device Latency",
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 12,
+        "y": 60
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "max(ping_average_response_ms{job=\"telegraf\"})",
+          "legendFormat": "{{device_name}}",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "type": "stat",
+      "id": 15,
+      "title": "Worst Packet Loss",
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 18,
+        "y": 60
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "max(ping_percent_packet_loss{job=\"telegraf\"})",
+          "legendFormat": "{{device_name}}",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 76
+      },
+      "id": 16,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "100 * (1 - (sum(node_filesystem_avail_bytes{job=\"node-exporter\",fstype=\"ext4\"}) / sum(node_filesystem_size_bytes{job=\"node-exporter\",fstype=\"ext4\"})))",
+          "legendFormat": "Docker host ext4",
+          "refId": "A"
+        }
+      ],
+      "title": "Docker Host Disk Usage",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Size"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "bytes"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Available"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "bytes"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 18,
+        "x": 6,
+        "y": 76
+      },
+      "id": 17,
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Used %"
+          }
+        ]
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "100 * (1 - (node_filesystem_avail_bytes{job=\"ubuntu-node-exporter\",fstype!~\"tmpfs|overlay|squashfs|devtmpfs|proc|sysfs|cgroup.*|nsfs|autofs\",mountpoint!~\"^/(run|sys|proc|dev)($|/)\"} / node_filesystem_size_bytes{job=\"ubuntu-node-exporter\",fstype!~\"tmpfs|overlay|squashfs|devtmpfs|proc|sysfs|cgroup.*|nsfs|autofs\",mountpoint!~\"^/(run|sys|proc|dev)($|/)\"}))",
+          "format": "table",
+          "instant": true,
+          "legendFormat": "{{mountpoint}}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "node_filesystem_size_bytes{job=\"ubuntu-node-exporter\",fstype!~\"tmpfs|overlay|squashfs|devtmpfs|proc|sysfs|cgroup.*|nsfs|autofs\",mountpoint!~\"^/(run|sys|proc|dev)($|/)\"}",
+          "format": "table",
+          "instant": true,
+          "legendFormat": "{{mountpoint}}",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "node_filesystem_avail_bytes{job=\"ubuntu-node-exporter\",fstype!~\"tmpfs|overlay|squashfs|devtmpfs|proc|sysfs|cgroup.*|nsfs|autofs\",mountpoint!~\"^/(run|sys|proc|dev)($|/)\"}",
+          "format": "table",
+          "instant": true,
+          "legendFormat": "{{mountpoint}}",
+          "refId": "C"
+        }
+      ],
+      "title": "Ubuntu Server Filesystems",
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {
+            "byField": "mountpoint"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time 1": true,
+              "Time 2": true,
+              "Time 3": true,
+              "instance": true,
+              "job": true
+            },
+            "renameByName": {
+              "Value #A": "Used %",
+              "Value #B": "Size",
+              "Value #C": "Available"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 84
+      },
+      "id": 18,
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "ip"
+          }
+        ]
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "network_dashboard_device_up",
+          "format": "table",
+          "instant": true,
+          "legendFormat": "{{ip}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Network Device Inventory",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "__name__": true,
+              "instance": true,
+              "job": true
+            },
+            "renameByName": {
+              "Value": "Up"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 120
+              },
+              {
+                "color": "red",
+                "value": 300
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 92
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-ds"
+          },
+          "query": "from(bucket: \"network-metrics\")\n  |> range(start: -30m)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> last()\n  |> keep(columns: [\"_time\"])\n  |> group()\n  |> max(column: \"_time\")\n  |> map(fn: (r) => ({ r with _value: float(v: uint(v: now()) - uint(v: r._time)) / 1000000000.0 }))",
+          "queryType": "flux",
+          "refId": "A"
+        }
+      ],
+      "title": "Custom Agent Last Write Age",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 16,
+        "x": 8,
+        "y": 92
+      },
+      "id": 11,
+      "options": {
+        "displayMode": "gradient",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "valueMode": "color"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-ds"
+          },
+          "query": "from(bucket: \"network-metrics\")\n  |> range(start: -30m)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] =~ /^proto_/)\n  |> group(columns: [\"_field\"])\n  |> last()",
+          "queryType": "flux",
+          "refId": "A"
+        }
+      ],
+      "title": "Custom Agent Protocol Distribution",
+      "type": "bargauge"
+    }
+  ],
+  "refresh": "15s",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [
+    "home-network",
+    "prometheus"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Home Network Overview",
+  "uid": "home-network-overview",
+  "version": 9,
+  "weekStart": ""
+}

@@ -1,46 +1,94 @@
 # Network Dashboard
 
-A modern, containerized dashboard for monitoring your home network and connected devices, including your Ubuntu server.
+A containerized home network monitoring stack centered on Grafana, Prometheus,
+Node Exporter, Telegraf ping checks, and an optional InfluxDB packet/protocol
+agent.
 
-## 🚀 Features
+## Services
 
-*   **Real-time Network Discovery:** Automatically detects active devices on your network (via Nmap).
-*   **Device Status:** Visual indicators for online/offline status and latency.
-*   **Ubuntu Server Integration:** Deep-dive metrics including CPU, RAM, Disk, and service status via SSH.
-*   **Responsive Interface:** Beautiful, mobile-friendly dashboard built with React and Tailwind CSS.
-*   **Dockerized Deployment:** Easy one-command setup on any platform using Docker Compose.
+* Grafana: `http://localhost:3001`
+* Prometheus: `http://localhost:9090`
+* InfluxDB: `http://localhost:8086`
+* Backend API: `http://localhost:8000`
+* React app: `http://localhost:3000`
 
-## 🛠️ Tech Stack
+## Known Device Monitoring
 
-*   **Backend:** Python (FastAPI)
-*   **Frontend:** React, Tailwind CSS, Shadcn/UI
-*   **Orchestration:** Docker, Docker Compose
-*   **Networking:** Nmap, Paramiko (SSH)
+Known devices are the source of truth for ping monitoring. Create your local
+inventory from the tracked example:
 
-## 📦 Getting Started
+```bash
+cp config/known_devices.example.yml config/known_devices.yml
+```
 
-### Prerequisites
+Edit `config/known_devices.yml` with your real home devices, then regenerate
+Telegraf's ping config:
 
-*   [Docker](https://docs.docker.com/get-docker/)
-*   [Docker Compose](https://docs.docker.com/compose/install/)
+```bash
+python3 scripts/generate_telegraf_config.py
+docker compose up -d --force-recreate telegraf
+```
 
-### Installation
+The generated `telegraf/telegraf.conf` exposes ping metrics with labels such as
+`device_name`, `role`, `criticality`, and `location`. Grafana uses those labels
+in the Home Network Overview dashboard.
 
-1.  Clone the repository:
-    ```bash
-    git clone https://github.com/mjvincent/network-dashboard.git
-    cd network-dashboard
-    ```
+Backend Nmap scanning remains available for exploration, but the primary
+Grafana inventory is the known-device YAML plus Telegraf ping metrics.
 
-2.  Create a `.env` file with your credentials (e.g., SSH keys/passwords for your server).
+## Ubuntu Server Metrics
 
-3.  Start the application:
-    ```bash
-    docker-compose up -d
-    ```
+The Ubuntu Server panels expect node_exporter to run directly on the Ubuntu
+host at `192.168.68.85:9100`. On the Ubuntu server, run node_exporter with your
+preferred package/service manager or with Docker:
 
-4.  Access the dashboard in your browser at `http://localhost:3000`.
+```bash
+docker run -d --name node-exporter --restart unless-stopped \
+  --net host --pid host \
+  -v /:/host:ro,rslave \
+  prom/node-exporter:latest \
+  --path.rootfs=/host
+```
 
-## 🔒 Security
+Prometheus scrapes this as the `ubuntu-node-exporter` job. The local
+`node-exporter` container remains useful for Docker-host/internal visibility,
+but it is no longer used for Ubuntu Server disk panels.
 
-This application uses your existing SSH credentials and network scanning capabilities. Always ensure that the `.env` file is kept secure and never committed to version control.
+## MacBook Metrics
+
+MacBook Pro host panels use Homebrew's `node_exporter` service on the Mac:
+
+```bash
+brew install node_exporter
+brew services start node_exporter
+```
+
+Prometheus scrapes it from the Docker network as `macbook-node-exporter` at
+`host.docker.internal:9100`.
+
+## Alerts
+
+Grafana alert rules are provisioned from
+`grafana/provisioning/alerting/home-network.yml`. Current rules cover:
+
+* known devices down
+* critical known devices down
+* packet loss above 5%
+* LAN or Docker latency above 75 ms
+* core monitoring targets down
+
+The rules are intentionally committed without notification contact points.
+Add local notification routes later for email, Slack, Discord, Pushover, or
+another private destination.
+
+## Getting Started
+
+1. Copy `.env.example` to `.env` and set real local values.
+2. Copy `config/known_devices.example.yml` to `config/known_devices.yml`.
+3. Generate Telegraf config with `python3 scripts/generate_telegraf_config.py`.
+4. Start the stack with `docker compose up -d --build`.
+
+## Security
+
+Keep `.env` and `config/known_devices.yml` local. They are ignored so secrets
+and private home-network details do not get committed.

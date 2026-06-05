@@ -2,6 +2,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.db
+*.sqlite
+*.sqlite3
 .env
 .venv
 env/
@@ -18,6 +21,12 @@ yarn-error.log*
 
 # Docker
 .dockerignore
+
+# Runtime output
+*.log
+agent/agent.log
+backend/devices.db
+config/known_devices.yml
 
 # IDEs
 .vscode/

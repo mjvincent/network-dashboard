@@ -1,0 +1,352 @@
+apiVersion: 1
+
+groups:
+  - orgId: 1
+    name: Home Network Alerts
+    folder: Home Network
+    interval: 1m
+    rules:
+      - uid: home-known-devices-down
+        title: Known devices down
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: prometheus-ds
+            model:
+              datasource:
+                type: prometheus
+                uid: prometheus-ds
+              editorMode: code
+              expr: sum(clamp_max(ping_result_code{job="telegraf"}, 1))
+              instant: true
+              intervalMs: 1000
+              maxDataPoints: 43200
+              range: false
+              refId: A
+          - refId: B
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: __expr__
+            model:
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: A
+              reducer: last
+              refId: B
+              type: reduce
+          - refId: C
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: __expr__
+            model:
+              conditions:
+                - evaluator:
+                    params:
+                      - 0
+                    type: gt
+                  operator:
+                    type: and
+                  query:
+                    params:
+                      - C
+                  reducer:
+                    params: []
+                    type: last
+                  type: query
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: B
+              refId: C
+              type: threshold
+        noDataState: OK
+        execErrState: Error
+        for: 1m
+        annotations:
+          summary: One or more known devices are down.
+          description: Telegraf ping checks are reporting a non-zero result code for at least one known device.
+        labels:
+          severity: warning
+          area: inventory
+
+      - uid: home-critical-devices-down
+        title: Critical devices down
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: prometheus-ds
+            model:
+              datasource:
+                type: prometheus
+                uid: prometheus-ds
+              editorMode: code
+              expr: sum(clamp_max(ping_result_code{job="telegraf", criticality="critical"}, 1))
+              instant: true
+              intervalMs: 1000
+              maxDataPoints: 43200
+              range: false
+              refId: A
+          - refId: B
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: __expr__
+            model:
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: A
+              reducer: last
+              refId: B
+              type: reduce
+          - refId: C
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: __expr__
+            model:
+              conditions:
+                - evaluator:
+                    params:
+                      - 0
+                    type: gt
+                  operator:
+                    type: and
+                  query:
+                    params:
+                      - C
+                  reducer:
+                    params: []
+                    type: last
+                  type: query
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: B
+              refId: C
+              type: threshold
+        noDataState: Alerting
+        execErrState: Error
+        for: 1m
+        annotations:
+          summary: A critical known device is down.
+          description: A router/server-class known device with criticality=critical is failing ping checks.
+        labels:
+          severity: critical
+          area: inventory
+
+      - uid: home-known-device-packet-loss
+        title: Known device packet loss high
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: prometheus-ds
+            model:
+              datasource:
+                type: prometheus
+                uid: prometheus-ds
+              editorMode: code
+              expr: max(ping_percent_packet_loss{job="telegraf"})
+              instant: true
+              intervalMs: 1000
+              maxDataPoints: 43200
+              range: false
+              refId: A
+          - refId: B
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: __expr__
+            model:
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: A
+              reducer: last
+              refId: B
+              type: reduce
+          - refId: C
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: __expr__
+            model:
+              conditions:
+                - evaluator:
+                    params:
+                      - 5
+                    type: gt
+                  operator:
+                    type: and
+                  query:
+                    params:
+                      - C
+                  reducer:
+                    params: []
+                    type: last
+                  type: query
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: B
+              refId: C
+              type: threshold
+        noDataState: OK
+        execErrState: Error
+        for: 2m
+        annotations:
+          summary: Known-device packet loss is above 5%.
+          description: At least one known device has sustained packet loss above the configured threshold.
+        labels:
+          severity: warning
+          area: network
+
+      - uid: home-lan-latency-high
+        title: LAN latency high
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: prometheus-ds
+            model:
+              datasource:
+                type: prometheus
+                uid: prometheus-ds
+              editorMode: code
+              expr: max(ping_average_response_ms{job="telegraf", location=~"home|docker"})
+              instant: true
+              intervalMs: 1000
+              maxDataPoints: 43200
+              range: false
+              refId: A
+          - refId: B
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: __expr__
+            model:
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: A
+              reducer: last
+              refId: B
+              type: reduce
+          - refId: C
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: __expr__
+            model:
+              conditions:
+                - evaluator:
+                    params:
+                      - 75
+                    type: gt
+                  operator:
+                    type: and
+                  query:
+                    params:
+                      - C
+                  reducer:
+                    params: []
+                    type: last
+                  type: query
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: B
+              refId: C
+              type: threshold
+        noDataState: OK
+        execErrState: Error
+        for: 3m
+        annotations:
+          summary: LAN or Docker ping latency is above 75 ms.
+          description: A known local device has sustained higher-than-expected ping latency.
+        labels:
+          severity: warning
+          area: network
+
+      - uid: home-monitoring-target-down
+        title: Monitoring target down
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: prometheus-ds
+            model:
+              datasource:
+                type: prometheus
+                uid: prometheus-ds
+              editorMode: code
+              expr: sum(1 - up{job=~"backend|node-exporter|prometheus|telegraf"})
+              instant: true
+              intervalMs: 1000
+              maxDataPoints: 43200
+              range: false
+              refId: A
+          - refId: B
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: __expr__
+            model:
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: A
+              reducer: last
+              refId: B
+              type: reduce
+          - refId: C
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: __expr__
+            model:
+              conditions:
+                - evaluator:
+                    params:
+                      - 0
+                    type: gt
+                  operator:
+                    type: and
+                  query:
+                    params:
+                      - C
+                  reducer:
+                    params: []
+                    type: last
+                  type: query
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: B
+              refId: C
+              type: threshold
+        noDataState: Alerting
+        execErrState: Error
+        for: 1m
+        annotations:
+          summary: A monitoring service target is down.
+          description: Prometheus cannot scrape one or more core monitoring targets.
+        labels:
+          severity: critical
+          area: monitoring

@@ -1,0 +1,32 @@
+apiVersion: 1
+
+datasources:
+  - name: InfluxDB
+    type: influxdb
+    uid: influxdb-ds
+    url: http://influxdb:8086
+    access: proxy
+    isConfigured: true
+    jsonData:
+      version: Flux
+      httpMode: "POST"
+      organization: ${INFLUXDB_ORG}
+      defaultBucket: ${INFLUXDB_BUCKET}
+    secureJsonData:
+      token: ${INFLUXDB_TOKEN}
+  - name: Prometheus
+    type: prometheus
+    uid: prometheus-ds
+    url: http://prometheus:9090
+    access: proxy
+    isConfigured: true
+    isDefault: true
+  - name: Infinity
+    type: yesoreyeram-infinity-datasource
+    uid: infinity-ds
+    url: http://backend:8000
+    access: proxy
+    isConfigured: true
+    jsonData:
+      allowedHosts:
+        - http://backend:8000

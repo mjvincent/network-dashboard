@@ -1,0 +1,71 @@
+devices:
+  - id: gateway
+    name: Gateway
+    role: router
+    ip: 192.168.68.1
+    monitor: ping
+    criticality: critical
+    location: home
+    zone: lan
+    map_group: core
+    notes: Primary home network gateway.
+
+  - id: ubuntu-server
+    name: Ubuntu Server
+    role: server
+    ip: 192.168.68.85
+    monitor: ping
+    criticality: critical
+    location: home
+    zone: lan
+    map_group: servers
+    uplink: gateway
+    notes: Docker host monitored deeply by node_exporter.
+
+  - id: macbook-pro
+    name: MacBook Pro
+    role: laptop
+    ip: host.docker.internal
+    monitor: ping
+    criticality: critical
+    location: home
+    zone: lan
+    map_group: clients
+    uplink: gateway
+    notes: Docker route back to the MacBook host, monitored deeply by local node_exporter.
+
+  - id: node-exporter
+    name: Node Exporter
+    role: exporter
+    ip: node-exporter
+    monitor: ping
+    criticality: standard
+    location: docker
+    zone: docker
+    map_group: exporters
+    uplink: macbook-pro
+    notes: Internal Docker DNS name for the host metrics exporter.
+
+  - id: cloudflare-dns
+    name: Cloudflare DNS
+    role: internet-check
+    ip: 1.1.1.1
+    monitor: ping
+    criticality: standard
+    location: internet
+    zone: internet
+    map_group: internet
+    uplink: gateway
+    notes: External reachability and latency baseline.
+
+  - id: google-dns
+    name: Google DNS
+    role: internet-check
+    ip: 8.8.8.8
+    monitor: ping
+    criticality: standard
+    location: internet
+    zone: internet
+    map_group: internet
+    uplink: gateway
+    notes: Secondary external reachability baseline.
