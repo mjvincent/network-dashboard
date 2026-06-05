@@ -1,4 +1,3 @@
-version: '3.8'
 
 services:
   backend:
@@ -15,7 +14,7 @@ services:
   
   frontend:
     build:
-      context: /Users/michaelvincentjones/Documents/GitHub/network-dashboard/frontend
+      context: ./frontend
       dockerfile: Dockerfile
     container_name: network-dashboard-frontend
     ports:
@@ -26,6 +25,85 @@ services:
       - backend
     networks:
       - default
+
+  influxdb:
+    image: influxdb:2.7
+    container_name: network-dashboard-influxdb
+    ports:
+      - "8086:8086"
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=password12345
+      - DOCKER_INFLUXDB_INIT_ORG=network-dashboard
+      - DOCKER_INFLUXDB_INIT_BUCKET=network-metrics
+      - DOCKER_INFLUXDB_INIT_RETENTION=30d
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=kiqNHcZNp9kf-6onPGdoU02uKowNNeAE0KnXNPGBupc8B5yD7NrXZiLixwWl1cIWdZj-F9lTSjiTvvjvD0b44A==
+    networks:
+      - default
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: network-dashboard-grafana
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    depends_on:
+      - influxdb
+      - prometheus
+    networks:
+      - default
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: network-dashboard-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - default
+
+  agent:
+    build: ./agent
+    container_name: network-dashboard-agent
+    env_file:
+      - ./agent/.env
+    environment:
+      - INFLUXDB_URL=http://influxdb:8086
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    depends_on:
+      - influxdb
+    networks:
+      - default
+  
+  # Service for Ubuntu Server Metrics
+  ubuntu-server:
+    image: busybox
+    container_name: ubuntu-server
+    ports:
+      - "9100:9100"
+    command: tail -f /dev/null # Keep the container running
+    networks:
+      - default
+  
+  # Service for MacBook Pro Metrics
+  macbook-pro:
+    image: busybox
+    container_name: macbook-pro
+    ports:
+      - "9101:9101"
+    command: tail -f /dev/null # Keep the container running
+
+volumes:
+  influxdb_data:
 
 networks:
   default:

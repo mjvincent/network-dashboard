@@ -1,0 +1,30 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'influxdb'
+    static_configs:
+      - targets: ['influxdb:8086']
+
+  - job_name: 'backend'
+    static_configs:
+      - targets: ['backend:8000']
+
+  - job_name: 'agent'
+    static_configs:
+      - targets: ['agent:8000'] # Assuming agent might expose metrics on 8000 if configured
+
+  # Metrics from Ubuntu Server (Assuming it runs Node Exporter on port 9100)
+  - job_name: 'ubuntu_server'
+    static_configs:
+      - targets: ['ubuntu-server:9100']
+
+  # Metrics from MacBook Pro (Assuming it runs a metrics agent on port 9101)
+  - job_name: 'macbook_pro'
+    static_configs:
+      - targets: ['macbook-pro:9101']
