@@ -11,7 +11,7 @@ from scanner import NetworkScanner
 
 load_dotenv()
 
-SCAN_RANGE = os.getenv("SCAN_RANGE", "192.168.1.0/24")
+SCAN_RANGE = os.getenv("SCAN_RANGE", "192.168.68.0/24")
 INFLUXDB_URL = os.getenv("INFLUXDB_URL", "http://influxdb:8086")
 INFLUXDB_TOKEN = os.getenv("INFLUXDB_TOKEN")
 INFLUXDB_ORG = os.getenv("INFLUXDB_ORG")
