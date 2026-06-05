@@ -1,9 +1,15 @@
 import os
+import re
 from pathlib import Path
 
 
 REPO_KNOWN_DEVICES = Path(__file__).resolve().parents[1] / "config" / "known_devices.yml"
 REPO_EXAMPLE_DEVICES = Path(__file__).resolve().parents[1] / "config" / "known_devices.example.yml"
+
+
+def slugify(value):
+    slug = re.sub(r"[^a-z0-9]+", "-", str(value).strip().lower()).strip("-")
+    return slug or "device"
 
 
 def parse_scalar(value):
@@ -89,14 +95,19 @@ def load_known_devices():
         ip = str(device.get("ip", "")).strip()
         if not ip:
             continue
+        name = str(device.get("name") or device.get("hostname") or ip)
         devices.append({
+            "id": str(device.get("id") or slugify(name or ip)),
             "ip": ip,
-            "hostname": str(device.get("name") or device.get("hostname") or ""),
+            "hostname": name,
             "mac": str(device.get("mac") or ""),
             "vendor": str(device.get("vendor") or "Unknown"),
             "role": str(device.get("role") or "device"),
             "location": str(device.get("location") or "unknown"),
             "criticality": str(device.get("criticality") or "standard"),
+            "uplink": str(device.get("uplink") or ""),
+            "zone": str(device.get("zone") or ""),
+            "map_group": str(device.get("map_group") or ""),
             "source": "known",
             "status": "known",
             "last_seen": None,

@@ -58,6 +58,7 @@ services:
       - "3001:3000"
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
+      - GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource
       - INFLUXDB_TOKEN=${INFLUXDB_TOKEN:?Set INFLUXDB_TOKEN in .env}
       - INFLUXDB_ORG=${INFLUXDB_ORG:-network-dashboard}
       - INFLUXDB_BUCKET=${INFLUXDB_BUCKET:-network-metrics}

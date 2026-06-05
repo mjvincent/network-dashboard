@@ -516,6 +516,531 @@
       "type": "timeseries"
     },
     {
+      "id": 24,
+      "type": "nodeGraph",
+      "title": "Network Map",
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "infinity-ds"
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 32
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "options": {
+        "nodes": {},
+        "edges": {}
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "infinity-ds"
+          },
+          "type": "json",
+          "source": "url",
+          "url": "/topology/nodes",
+          "method": "GET",
+          "parser": "backend",
+          "root_selector": "nodes",
+          "format": "node-graph-nodes",
+          "columns": [
+            {
+              "selector": "id",
+              "text": "id",
+              "type": "string"
+            },
+            {
+              "selector": "title",
+              "text": "title",
+              "type": "string"
+            },
+            {
+              "selector": "subTitle",
+              "text": "subTitle",
+              "type": "string"
+            },
+            {
+              "selector": "mainStat",
+              "text": "mainStat",
+              "type": "string"
+            },
+            {
+              "selector": "secondaryStat",
+              "text": "secondaryStat",
+              "type": "string"
+            },
+            {
+              "selector": "arc__up",
+              "text": "arc__up",
+              "type": "number"
+            },
+            {
+              "selector": "arc__down",
+              "text": "arc__down",
+              "type": "number"
+            },
+            {
+              "selector": "arc__up_color",
+              "text": "arc__up_color",
+              "type": "string"
+            },
+            {
+              "selector": "arc__down_color",
+              "text": "arc__down_color",
+              "type": "string"
+            },
+            {
+              "selector": "detail__ip",
+              "text": "detail__ip",
+              "type": "string"
+            },
+            {
+              "selector": "detail__status",
+              "text": "detail__status",
+              "type": "string"
+            },
+            {
+              "selector": "detail__role",
+              "text": "detail__role",
+              "type": "string"
+            },
+            {
+              "selector": "detail__location",
+              "text": "detail__location",
+              "type": "string"
+            },
+            {
+              "selector": "detail__criticality",
+              "text": "detail__criticality",
+              "type": "string"
+            },
+            {
+              "selector": "detail__source",
+              "text": "detail__source",
+              "type": "string"
+            },
+            {
+              "selector": "detail__zone",
+              "text": "detail__zone",
+              "type": "string"
+            },
+            {
+              "selector": "detail__map_group",
+              "text": "detail__map_group",
+              "type": "string"
+            }
+          ]
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "infinity-ds"
+          },
+          "type": "json",
+          "source": "url",
+          "url": "/topology/edges",
+          "method": "GET",
+          "parser": "backend",
+          "root_selector": "edges",
+          "format": "node-graph-edges",
+          "columns": [
+            {
+              "selector": "id",
+              "text": "id",
+              "type": "string"
+            },
+            {
+              "selector": "source",
+              "text": "source",
+              "type": "string"
+            },
+            {
+              "selector": "target",
+              "text": "target",
+              "type": "string"
+            },
+            {
+              "selector": "mainStat",
+              "text": "mainStat",
+              "type": "string"
+            },
+            {
+              "selector": "secondaryStat",
+              "text": "secondaryStat",
+              "type": "string"
+            },
+            {
+              "selector": "detail__source_device",
+              "text": "detail__source_device",
+              "type": "string"
+            },
+            {
+              "selector": "detail__target_device",
+              "text": "detail__target_device",
+              "type": "string"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "type": "stat",
+      "title": "LAN Known IPs",
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "infinity-ds"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 0,
+        "y": 44
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "infinity-ds"
+          },
+          "type": "json",
+          "source": "url",
+          "url": "/network/utilization?network_range=192.168.68.0/24",
+          "method": "GET",
+          "parser": "backend",
+          "root_selector": "summary",
+          "format": "table",
+          "columns": [
+            {
+              "selector": "known",
+              "text": "known",
+              "type": "number"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "type": "stat",
+      "title": "LAN Discovered IPs",
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "infinity-ds"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 4,
+        "y": 44
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "infinity-ds"
+          },
+          "type": "json",
+          "source": "url",
+          "url": "/network/utilization?network_range=192.168.68.0/24",
+          "method": "GET",
+          "parser": "backend",
+          "root_selector": "summary",
+          "format": "table",
+          "columns": [
+            {
+              "selector": "discovered",
+              "text": "discovered",
+              "type": "number"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "type": "stat",
+      "title": "LAN Online IPs",
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "infinity-ds"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 8,
+        "y": 44
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "infinity-ds"
+          },
+          "type": "json",
+          "source": "url",
+          "url": "/network/utilization?network_range=192.168.68.0/24",
+          "method": "GET",
+          "parser": "backend",
+          "root_selector": "summary",
+          "format": "table",
+          "columns": [
+            {
+              "selector": "online",
+              "text": "online",
+              "type": "number"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "type": "stat",
+      "title": "LAN Offline IPs",
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "infinity-ds"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 12,
+        "y": 44
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "infinity-ds"
+          },
+          "type": "json",
+          "source": "url",
+          "url": "/network/utilization?network_range=192.168.68.0/24",
+          "method": "GET",
+          "parser": "backend",
+          "root_selector": "summary",
+          "format": "table",
+          "columns": [
+            {
+              "selector": "offline",
+              "text": "offline",
+              "type": "number"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "type": "stat",
+      "title": "LAN Unknown IPs",
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "infinity-ds"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 16,
+        "y": 44
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "infinity-ds"
+          },
+          "type": "json",
+          "source": "url",
+          "url": "/network/utilization?network_range=192.168.68.0/24",
+          "method": "GET",
+          "parser": "backend",
+          "root_selector": "summary",
+          "format": "table",
+          "columns": [
+            {
+              "selector": "unknown",
+              "text": "unknown",
+              "type": "number"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "type": "stat",
+      "title": "LAN Unused IPs",
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "infinity-ds"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 20,
+        "y": 44
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "infinity-ds"
+          },
+          "type": "json",
+          "source": "url",
+          "url": "/network/utilization?network_range=192.168.68.0/24",
+          "method": "GET",
+          "parser": "backend",
+          "root_selector": "summary",
+          "format": "table",
+          "columns": [
+            {
+              "selector": "unused",
+              "text": "unused",
+              "type": "number"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "datasource": {
         "type": "prometheus",
         "uid": "prometheus-ds"
@@ -530,7 +1055,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 32
+        "y": 52
       },
       "id": 7,
       "targets": [
@@ -562,7 +1087,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 32
+        "y": 52
       },
       "id": 8,
       "targets": [
@@ -594,7 +1119,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 32
+        "y": 52
       },
       "id": 9,
       "targets": [
@@ -656,7 +1181,7 @@
         "h": 8,
         "w": 6,
         "x": 0,
-        "y": 40
+        "y": 60
       },
       "targets": [
         {
@@ -715,7 +1240,7 @@
         "h": 8,
         "w": 6,
         "x": 6,
-        "y": 40
+        "y": 60
       },
       "targets": [
         {
@@ -778,7 +1303,7 @@
         "h": 8,
         "w": 6,
         "x": 12,
-        "y": 40
+        "y": 60
       },
       "targets": [
         {
@@ -841,7 +1366,7 @@
         "h": 8,
         "w": 6,
         "x": 18,
-        "y": 40
+        "y": 60
       },
       "targets": [
         {
@@ -870,7 +1395,7 @@
         "h": 8,
         "w": 6,
         "x": 0,
-        "y": 56
+        "y": 76
       },
       "id": 16,
       "options": {
@@ -939,7 +1464,7 @@
         "h": 8,
         "w": 18,
         "x": 6,
-        "y": 56
+        "y": 76
       },
       "id": 17,
       "options": {
@@ -1029,7 +1554,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 64
+        "y": 84
       },
       "id": 18,
       "options": {
@@ -1105,7 +1630,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 72
+        "y": 92
       },
       "id": 10,
       "options": {
@@ -1151,7 +1676,7 @@
         "h": 8,
         "w": 16,
         "x": 8,
-        "y": 72
+        "y": 92
       },
       "id": 11,
       "options": {
@@ -1202,6 +1727,6 @@
   "timezone": "",
   "title": "Home Network Overview",
   "uid": "home-network-overview",
-  "version": 7,
+  "version": 8,
   "weekStart": ""
 }

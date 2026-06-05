@@ -128,6 +128,8 @@ def render_ping_input(device: dict[str, object]) -> str:
 
 
 def generate(inventory_path: Path, output_path: Path) -> int:
+    inventory_path = inventory_path.resolve()
+    output_path = output_path.resolve()
     devices = parse_devices(inventory_path)
     monitored_devices = [device for device in devices if should_monitor(device)]
     if not monitored_devices:

@@ -1,5 +1,6 @@
 import sqlite3
 import os
+import ipaddress
 
 from known_devices import load_known_devices
 
@@ -157,6 +158,7 @@ class DeviceRegistry:
 
             known = devices_by_ip.get(ip, {})
             devices_by_ip[ip] = {
+                "id": known.get("id") or ip,
                 "ip": ip,
                 "hostname": known.get("hostname") or device.get("hostname") or "",
                 "mac": device.get("mac") or known.get("mac") or "",
@@ -164,6 +166,9 @@ class DeviceRegistry:
                 "role": known.get("role") or "unknown",
                 "location": known.get("location") or "unknown",
                 "criticality": known.get("criticality") or "standard",
+                "uplink": known.get("uplink") or "",
+                "zone": known.get("zone") or "",
+                "map_group": known.get("map_group") or "",
                 "source": "known+scan" if known else "scan",
                 "status": device.get("status") or "unknown",
                 "last_seen": device.get("last_seen"),
@@ -176,6 +181,109 @@ class DeviceRegistry:
                 item.get("ip", ""),
             ),
         )
+
+    def get_topology_nodes(self):
+        nodes = []
+        for device in self.get_merged_devices():
+            status = str(device.get("status") or "unknown").lower()
+            is_up = status in {"online", "known"}
+            color = "green" if is_up else "red"
+            nodes.append({
+                "id": str(device.get("id") or device.get("ip")),
+                "title": str(device.get("hostname") or device.get("ip")),
+                "subTitle": str(device.get("role") or "device"),
+                "mainStat": "UP" if is_up else "DOWN",
+                "secondaryStat": str(device.get("ip") or ""),
+                "arc__up": 1 if is_up else 0,
+                "arc__down": 0 if is_up else 1,
+                "arc__up_color": "green",
+                "arc__down_color": "red",
+                "detail__ip": str(device.get("ip") or ""),
+                "detail__status": status,
+                "detail__role": str(device.get("role") or "unknown"),
+                "detail__location": str(device.get("location") or "unknown"),
+                "detail__criticality": str(device.get("criticality") or "standard"),
+                "detail__source": str(device.get("source") or "unknown"),
+                "detail__zone": str(device.get("zone") or ""),
+                "detail__map_group": str(device.get("map_group") or ""),
+                "detail__color": color,
+            })
+        return nodes
+
+    def get_topology_edges(self):
+        known_devices = load_known_devices()
+        known_ids = {device.get("id") for device in known_devices if device.get("id")}
+        edges = []
+
+        for device in known_devices:
+            source = device.get("id")
+            target = device.get("uplink")
+            if not source or not target:
+                continue
+            if target not in known_ids:
+                continue
+
+            edges.append({
+                "id": f"{source}-to-{target}",
+                "source": source,
+                "target": target,
+                "mainStat": "uplink",
+                "secondaryStat": str(device.get("role") or "device"),
+                "detail__source_device": str(device.get("hostname") or source),
+                "detail__target_device": target,
+            })
+
+        return edges
+
+    def get_network_utilization(self, network_range):
+        network = ipaddress.ip_network(network_range, strict=False)
+        usable_addresses = max(0, network.num_addresses - 2)
+        known_ips = set()
+        discovered_ips = set()
+        online_ips = set()
+        offline_ips = set()
+        unknown_ips = set()
+
+        for device in load_known_devices():
+            ip = self._ip_in_network(device.get("ip"), network)
+            if ip:
+                known_ips.add(ip)
+
+        for device in self.get_discovered_devices():
+            ip = self._ip_in_network(device.get("ip"), network)
+            if not ip:
+                continue
+            discovered_ips.add(ip)
+            status = str(device.get("status") or "unknown").lower()
+            if status == "online":
+                online_ips.add(ip)
+            elif status == "offline":
+                offline_ips.add(ip)
+            else:
+                unknown_ips.add(ip)
+
+        occupied_ips = known_ips | discovered_ips
+        known_online_ips = known_ips - offline_ips
+        online_ips |= known_online_ips
+
+        return {
+            "network_range": str(network),
+            "usable": usable_addresses,
+            "known": len(known_ips),
+            "discovered": len(discovered_ips),
+            "online": len(online_ips),
+            "offline": len(offline_ips),
+            "unknown": len(unknown_ips),
+            "used": len(occupied_ips),
+            "unused": max(0, usable_addresses - len(occupied_ips)),
+        }
+
+    def _ip_in_network(self, value, network):
+        try:
+            ip = ipaddress.ip_address(str(value))
+        except ValueError:
+            return None
+        return str(ip) if ip in network else None
 
     def get_device(self, ip):
         with sqlite3.connect(self.db_path) as conn:

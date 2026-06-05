@@ -21,3 +21,12 @@ datasources:
     access: proxy
     isConfigured: true
     isDefault: true
+  - name: Infinity
+    type: yesoreyeram-infinity-datasource
+    uid: infinity-ds
+    url: http://backend:8000
+    access: proxy
+    isConfigured: true
+    jsonData:
+      allowedHosts:
+        - http://backend:8000

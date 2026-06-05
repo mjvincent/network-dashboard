@@ -66,6 +66,37 @@ async def get_devices():
         raise HTTPException(status_code=500, detail=f"Failed to retrieve devices: {exc}") from exc
 
 
+@app.get("/topology/nodes")
+async def get_topology_nodes():
+    try:
+        return {"nodes": registry.get_topology_nodes()}
+    except sqlite3.OperationalError as exc:
+        raise HTTPException(status_code=503, detail=f"Device registry unavailable: {exc}") from exc
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Failed to retrieve topology nodes: {exc}") from exc
+
+
+@app.get("/topology/edges")
+async def get_topology_edges():
+    try:
+        return {"edges": registry.get_topology_edges()}
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Failed to retrieve topology edges: {exc}") from exc
+
+
+@app.get("/network/utilization")
+async def get_network_utilization(network_range: str = SCAN_RANGE):
+    try:
+        utilization = registry.get_network_utilization(network_range)
+        return {**utilization, "summary": [utilization]}
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=f"Invalid network range: {exc}") from exc
+    except sqlite3.OperationalError as exc:
+        raise HTTPException(status_code=503, detail=f"Device registry unavailable: {exc}") from exc
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Failed to calculate network utilization: {exc}") from exc
+
+
 @app.get("/alerts")
 async def get_alerts(limit: int = 20):
     try:
