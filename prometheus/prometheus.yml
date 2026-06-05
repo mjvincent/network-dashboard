@@ -24,6 +24,11 @@ scrape_configs:
       - targets:
           - 192.168.68.85:9100
 
+  - job_name: macbook-node-exporter
+    static_configs:
+      - targets:
+          - host.docker.internal:9100
+
   - job_name: telegraf
     static_configs:
       - targets:

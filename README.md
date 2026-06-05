@@ -54,6 +54,18 @@ Prometheus scrapes this as the `ubuntu-node-exporter` job. The local
 `node-exporter` container remains useful for Docker-host/internal visibility,
 but it is no longer used for Ubuntu Server disk panels.
 
+## MacBook Metrics
+
+MacBook Pro host panels use Homebrew's `node_exporter` service on the Mac:
+
+```bash
+brew install node_exporter
+brew services start node_exporter
+```
+
+Prometheus scrapes it from the Docker network as `macbook-node-exporter` at
+`host.docker.internal:9100`.
+
 ## Alerts
 
 Grafana alert rules are provisioned from
