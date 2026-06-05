@@ -3,6 +3,5 @@ uvicorn
 python-multipart
 python-dotenv
 paramiko
-python-nmap
 psutil
 influxdb-client

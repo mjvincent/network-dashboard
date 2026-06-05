@@ -226,6 +226,7 @@
       },
       "gridPos": {
         "h": 8,
+        "append": 0,
         "w": 24,
         "x": 0,
         "y": 16
@@ -331,6 +332,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
+        "append": 0,
         "y": 24
       },
       "id": 6,
@@ -349,7 +351,7 @@
             "uid": "influxdb-ds"
           },
           "queryType": "flux",
-          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] == \"proto_network_packets_sent\" or r[\"_field\"] == \"proto_network_packets_recv\")\n  |> yield(name: \"packets\")"
+          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] == \"network_packets_sent\" or r[\"_field\"] == \"network_packets_recv\")\n  |> yield(name: \"packets\")"
         }
       ],
       "title": "Network Packets",
@@ -391,11 +393,123 @@
             "uid": "influxdb-ds"
           },
           "queryType": "flux",
-          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] == \"proto_network_dropin\" or r[\"_field\"] == \"proto_network_dropout\")\n  |> yield(name: \"drops\")"
+          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] == \"network_dropin\" or r[\"_field\"] == \"network_dropout\")\n  |> yield(name: \"drops\")"
         }
       ],
       "title": "Network Drops",
       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "palette": "blue"
+          },
+          "custom": {
+            "axisLabel": "Bytes/s"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "append": 0,
+        "y": 24
+      },
+      "id": 8,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "13.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-ds"
+          },
+          "queryType": "flux",
+          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] == \"disk_io_read_bytes_rate\" or r[\"_field\"] == \"disk_io_write_bytes_rate\")\n  |> group(columns: [\"_field\"])\n  |> last()"
+        }
+      ],
+      "title": "Disk I/O Rate",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          },
+          "unit": "count"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "append": 0,
+        "y": 32
+      },
+      "id": 9,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "13.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb-ds"
+          },
+          "queryType": "flux",
+          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> aggregateWindow(every: 1s, fn: mean, createEmpty: true) \n  |> group(columns: [\"_field\"])\n  |> yield(name: \"top_processes\")"
+        }
+      ],
+      "title": "Top Processes by CPU",
+      "type": "table"
     }
   ],
   "schemaVersion": 38,

@@ -7,8 +7,9 @@
           "type": "grafana",
           "uid": "-- Grafana --"
         },
-        "name": "Annotations & Alerts",
-        "type": "dashboard"
+        "name": "Dashboard Metrics Legend & Guide",
+        "type": "dashboard",
+        "description": "This dashboard provides an overview of critical system and application metrics. For detailed metrics, use the associated service panels (CPU Usage, Memory Usage, etc.) rather than the raw 'Metrics' list, which contains all raw data source metrics (405+). Key metrics are highlighted below:\n1. CPU/Memory: Resource utilization rates for the 'backend' service (container/VM).\n2. Network I/O: Data transfer rates (bytes/s) for network interfaces.\n3. Protocol Distribution: Breakdown of communication protocols (e.g., TCP, UDP)."
       }
     ]
   },
@@ -19,8 +20,68 @@
   "panels": [
     {
       "datasource": {
-        "type": "influxdb",
-        "uid": "influxdb-ds"
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "title": "CPU Usage",
+        "uid": "cpu-usage"
+      },
+      "pluginVersion": "13.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "query": "avg(rate(system_cpu_usage_percent{job=\"backend\"}[5m]))",
+          "refId": "A"
+        }
+      ],
+      "title": "CPU Usage",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
       },
       "fieldConfig": {
         "defaults": {
@@ -49,67 +110,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 0
-      },
-      "id": 1,
-      "options": {
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "title": "CPU Usage",
-        "uid": "cpu-usage"
-      },
-      "pluginVersion": "13.0.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "influxdb",
-            "uid": "influxdb-ds"
-          },
-          "queryType": "flux",
-          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] == \"cpu_usage_percent\")\n  |> yield(name: \"cpu\")"
-        }
-      ],
-      "title": "CPU Usage",
-      "type": "gauge"
-    },
-    {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "influxdb-ds"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 0
+        "y": 8
       },
       "id": 2,
       "options": {
@@ -127,11 +128,11 @@
       "targets": [
         {
           "datasource": {
-            "type": "influxdb",
-            "uid": "influxdb-ds"
+            "type": "prometheus",
+            "uid": "prometheus-ds"
           },
-          "queryType": "flux",
-          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] == \"memory_usage_percent\")\n  |> yield(name: \"mem\")"
+          "query": "avg(system_memory_usage_percent{job=\"backend\"})",
+          "refId": "A"
         }
       ],
       "title": "Memory Usage",
@@ -139,8 +140,8 @@
     },
     {
       "datasource": {
-        "type": "influxdb",
-        "uid": "influxdb-ds"
+        "type": "prometheus",
+        "uid": "prometheus-ds"
       },
       "fieldConfig": {
         "defaults": {
@@ -169,7 +170,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 8
+        "y": 16
       },
       "id": 3,
       "options": {
@@ -187,11 +188,11 @@
       "targets": [
         {
           "datasource": {
-            "type": "influxdb",
-            "uid": "influxdb-ds"
+            "type": "prometheus",
+            "uid": "prometheus-ds"
           },
-          "queryType": "flux",
-          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] == \"disk_usage_percent\")\n  |> yield(name: \"disk\")"
+          "query": "avg(system_disk_usage_percent{job=\"backend\"})",
+          "refId": "A"
         }
       ],
       "title": "Disk Usage",
@@ -199,28 +200,20 @@
     },
     {
       "datasource": {
-        "type": "influxdb",
-        "uid": "influxdb-ds"
+        "type": "prometheus",
+        "uid": "prometheus-ds"
       },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
-          "custom": {
-            "axisLabel": "Bytes"
-          },
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
+            "steps": []
           },
-          "unit": "bytes"
+          "unit": "bytes/s"
         },
         "overrides": []
       },
@@ -228,7 +221,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 16
+        "y": 24
       },
       "id": 4,
       "options": {
@@ -246,11 +239,11 @@
       "targets": [
         {
           "datasource": {
-            "type": "influxdb",
-            "uid": "influxdb-ds"
+            "type": "prometheus",
+            "uid": "prometheus-ds"
           },
-          "queryType": "flux",
-          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] == \"network_bytes_sent\" or r[\"_field\"] == \"network_bytes_recv\")\n  |> yield(name: \"network\")"
+          "query": "rate(network_bytes_sent[5m])",
+          "refId": "A"
         }
       ],
       "title": "Network I/O",
@@ -258,8 +251,8 @@
     },
     {
       "datasource": {
-        "type": "influxdb",
-        "uid": "influxdb-ds"
+        "type": "prometheus",
+        "uid": "prometheus-ds"
       },
       "fieldConfig": {
         "defaults": {
@@ -269,61 +262,9 @@
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
+            "steps": []
           },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 16
-      },
-      "id": 5,
-      "options": {
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "text": "Protocol Counts"
-      },
-      "pluginVersion": "13.0.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "influxdb",
-            "uid": "influxdb-ds"
-          },
-          "queryType": "flux",
-          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] =~ /proto_/\n  |> group(columns: [\"_field\"])\n  |> last()"
-        }
-      ],
-      "title": "Protocol Distribution",
-      "type": "bargauge"
-    },
-    {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "influxdb-ds"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "palette": "viridis"
-          },
-          "unit": "packets"
+          "unit": "bytes"
         },
         "overrides": []
       },
@@ -331,7 +272,54 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 24
+        "y": 32
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        }
+      },
+      "pluginVersion": "13.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "query": "sum(rate(system_metrics{job=\"backend\"}.{field=~\"proto_.*\"}[5m]))",
+          "refId": "A"
+        }
+      ],
+      "title": "Protocol Distribution",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          },
+          "unit": "count"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 40
       },
       "id": 6,
       "options": {
@@ -345,35 +333,40 @@
       "targets": [
         {
           "datasource": {
-            "type": "influxdb",
-            "uid": "influxdb-ds"
+            "type": "prometheus",
+            "uid": "prometheus-ds"
           },
-          "queryType": "flux",
-          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] == \"proto_network_packets_sent\" or r[\"_field\"] == \"proto_network_packets_recv\")\n  |> yield(name: \"packets\")"
+          "query": "rate(network_packets_sent[5m]) OR rate(network_packets_recv[5m])",
+          "refId": "A"
         }
       ],
-      "title": "Network Packets",
+      "title": "Network Packets Rate",
       "type": "timeseries"
     },
     {
       "datasource": {
-        "type": "influxdb",
-        "uid": "influxdb-ds"
+        "type": "prometheus",
+        "uid": "prometheus-ds"
       },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "palette": "red"
+            "mode": "palette-classic"
           },
-          "unit": "count"
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          },
+          "unit": "bytes/s"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 8,
         "w": 12,
-        "x": 12,
-        "y": 24
+        "x": 0,
+        "y": 48
       },
       "id": 7,
       "options": {
@@ -387,14 +380,65 @@
       "targets": [
         {
           "datasource": {
-            "type": "influxdb",
-            "uid": "influxdb-ds"
+            "type": "prometheus",
+            "uid": "prometheus-ds"
           },
-          "queryType": "flux",
-          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] == \"proto_network_dropin\" or r[\"_field\"] == \"proto_network_dropout\")\n  |> yield(name: \"drops\")"
+          "query": "rate(system_metrics{job=\"backend\"}.{field=~\"network_.*\"}[5m])",
+          "refId": "A"
         }
       ],
-      "title": "Network Drops",
+      "title": "Network Drops Rate",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          },
+          "unit": "bytes/s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 56
+      },
+      "id": 8,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "13.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "query": "rate(system_metrics{job=\"backend\"}.{field=~\"disk_io_.*\"}[5m])",
+          "refId": "A"
+        }
+      ],
+      "title": "Disk I/O Rate",
       "type": "timeseries"
     }
   ],
@@ -410,7 +454,15 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "System Metrics Dashboard",
-  "uid": "system-metrics-dashboard",
+  "title": "Prometheus Overview",
+  "uid": "prometheus-overview",
   "version": 1
-}
+}</write_to_file>
+<task_progress>
+- [ ] Confirm the correct Grafana dashboard and its port
+- [ ] Provide detailed instructions to access the dashboard
+- [x] Diagnose the root cause of the "Failed to load dashboard data" error by inspecting the backend and Prometheus configurations
+- [x] Update the Grafana dashboard configuration with the correct data sources and structure
+- [x] Refine dashboard usability by filtering metrics and adding meaningful titles (Completed)
+</task_progress>
+</write_to_file>
