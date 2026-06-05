@@ -8,15 +8,16 @@ datasources:
     access: proxy
     isConfigured: true
     jsonData:
-      version: Flux       # Fix: Instructs Grafana to use the v2 API engine
-      httpMode: "POST"    # Fix: Corrects the required transmission method
-      organization: network-dashboard
-      defaultBucket: network-metrics
+      version: Flux
+      httpMode: "POST"
+      organization: ${INFLUXDB_ORG}
+      defaultBucket: ${INFLUXDB_BUCKET}
     secureJsonData:
-      token: vcGwbZSl0OnQzj_ahh19is86QiteP40krwOxBrvLBrjEFPKIgSraXk1HmhOo0quf-Xa7lRW-DV-Unm0fYYESVg==
+      token: ${INFLUXDB_TOKEN}
   - name: Prometheus
     type: prometheus
     uid: prometheus-ds
     url: http://prometheus:9090
     access: proxy
     isConfigured: true
+    isDefault: true

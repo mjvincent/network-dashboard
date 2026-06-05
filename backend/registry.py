@@ -2,8 +2,11 @@ import sqlite3
 import os
 
 class DeviceRegistry:
-    def __init__(self, db_path="devices.db"):
-        self.db_path = db_path
+    def __init__(self, db_path=None):
+        self.db_path = db_path or os.getenv("DEVICE_DB_PATH", "/data/devices.db")
+        db_dir = os.path.dirname(self.db_path)
+        if db_dir:
+            os.makedirs(db_dir, exist_ok=True)
         self._init_db()
 
     def _init_db(self):
@@ -37,7 +40,7 @@ class DeviceRegistry:
             ''')
             conn.commit()
 
-    def update_device(self, device_info):
+    def update_device(self, device_info, cursor=None):
         """
         Updates or inserts a device in the registry.
         """
@@ -49,17 +52,23 @@ class DeviceRegistry:
         if not ip:
             return
 
+        query = '''
+            INSERT INTO devices (ip, hostname, mac, vendor, last_seen, status)
+            VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, 'online')
+            ON CONFLICT(ip) DO UPDATE SET
+                hostname=excluded.hostname,
+                mac=excluded.mac,
+                vendor=excluded.vendor,
+                last_seen=CURRENT_TIMESTAMP,
+                status='online'
+        '''
+
+        if cursor:
+            cursor.execute(query, (ip, hostname, mac, vendor))
+            return
+
         with sqlite3.connect(self.db_path) as conn:
-            cursor = conn.cursor()
-            cursor.execute('''
-                INSERT INTO devices (ip, hostname, mac, vendor, last_seen)
-                VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)
-                ON CONFLICT(ip) DO UPDATE SET
-                    hostname=excluded.hostname,
-                    mac=excluded.mac,
-                    vendor=excluded.vendor,
-                    last_seen=CURRENT_TIMESTAMP
-            ''', (ip, hostname, mac, vendor))
+            conn.execute(query, (ip, hostname, mac, vendor))
             conn.commit()
 
     def update_devices(self, devices):
@@ -82,10 +91,7 @@ class DeviceRegistry:
                 new_device_ips.add(ip)
                 
                 is_new = ip not in existing_devices
-                self.update_device(device)
-                
-                # Update status to online if it was offline or new
-                cursor.execute("UPDATE devices SET status = 'online' WHERE ip = ?", (ip,))
+                self.update_device(device, cursor=cursor)
                 
                 if is_new:
                     # Create discovery alert

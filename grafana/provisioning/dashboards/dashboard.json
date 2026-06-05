@@ -251,7 +251,7 @@
             "uid": "influxdb-ds"
           },
           "queryType": "flux",
-          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] == \"network_bytes_sent\" or r[\"_field\"] == \"network_bytes_recv\")\n  |> yield(name: \"network\")"
+          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] == \"network_bytes_sent_rate\" or r[\"_field\"] == \"network_bytes_recv_rate\")\n  |> yield(name: \"network\")"
         }
       ],
       "title": "Network I/O",
@@ -308,7 +308,7 @@
             "uid": "influxdb-ds"
           },
           "queryType": "flux",
-          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] =~ /proto_/\n  |> group(columns: [\"_field\"])\n  |> last()"
+          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] =~ /^proto_/ )\n  |> group(columns: [\"_field\"])\n  |> last()"
         }
       ],
       "title": "Protocol Distribution",
@@ -351,7 +351,7 @@
             "uid": "influxdb-ds"
           },
           "queryType": "flux",
-          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] == \"network_packets_sent\" or r[\"_field\"] == \"network_packets_recv\")\n  |> yield(name: \"packets\")"
+          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] == \"network_packets_sent_rate\" or r[\"_field\"] == \"network_packets_recv_rate\")\n  |> yield(name: \"packets\")"
         }
       ],
       "title": "Network Packets",
@@ -393,7 +393,7 @@
             "uid": "influxdb-ds"
           },
           "queryType": "flux",
-          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] == \"network_dropin\" or r[\"_field\"] == \"network_dropout\")\n  |> yield(name: \"drops\")"
+          "query": "from(bucket: \"network-metrics\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system_metrics\")\n  |> filter(fn: (r) => r[\"_field\"] == \"network_dropin_rate\" or r[\"_field\"] == \"network_dropout_rate\")\n  |> yield(name: \"drops\")"
         }
       ],
       "title": "Network Drops",

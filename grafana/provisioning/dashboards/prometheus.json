@@ -7,14 +7,17 @@
           "type": "grafana",
           "uid": "-- Grafana --"
         },
-        "name": "Dashboard Metrics Legend & Guide",
-        "type": "dashboard",
-        "description": "This dashboard provides an overview of critical system and application metrics. For detailed metrics, use the associated service panels (CPU Usage, Memory Usage, etc.) rather than the raw 'Metrics' list, which contains all raw data source metrics (405+). Key metrics are highlighted below:\n1. CPU/Memory: Resource utilization rates for the 'backend' service (container/VM).\n2. Network I/O: Data transfer rates (bytes/s) for network interfaces.\n3. Protocol Distribution: Breakdown of communication protocols (e.g., TCP, UDP)."
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
       }
     ]
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
   "id": null,
   "links": [],
   "panels": [
@@ -25,35 +28,19 @@
       },
       "fieldConfig": {
         "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
+          "unit": "percentunit"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 8,
-        "w": 12,
+        "w": 6,
         "x": 0,
         "y": 0
       },
       "id": 1,
       "options": {
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -61,21 +48,21 @@
           "fields": "",
           "values": false
         },
-        "title": "CPU Usage",
-        "uid": "cpu-usage"
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
       },
-      "pluginVersion": "13.0.2",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "prometheus-ds"
           },
-          "query": "avg(rate(system_cpu_usage_percent{job=\"backend\"}[5m]))",
+          "expr": "1 - avg by (instance) (rate(node_cpu_seconds_total{job=\"node-exporter\",mode=\"idle\"}[5m]))",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
-      "title": "CPU Usage",
+      "title": "Host CPU Usage",
       "type": "gauge"
     },
     {
@@ -85,24 +72,137 @@
       },
       "fieldConfig": {
         "defaults": {
-          "color": {
-            "mode": "thresholds"
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 6,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
           },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
+          "expr": "1 - (node_memory_MemAvailable_bytes{job=\"node-exporter\"} / node_memory_MemTotal_bytes{job=\"node-exporter\"})",
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Host Memory Usage",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 12,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
           },
-          "unit": "percent"
+          "expr": "max by (instance) (1 - (node_filesystem_avail_bytes{job=\"node-exporter\",fstype!~\"tmpfs|overlay\"} / node_filesystem_size_bytes{job=\"node-exporter\",fstype!~\"tmpfs|overlay\"}))",
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Host Disk Usage",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "time() - node_boot_time_seconds{job=\"node-exporter\"}",
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Host Uptime",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "Bps"
         },
         "overrides": []
       },
@@ -112,31 +212,39 @@
         "x": 0,
         "y": 8
       },
-      "id": 2,
+      "id": 5,
       "options": {
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "title": "Memory Usage",
-        "uid": "mem-usage"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "13.0.2",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "prometheus-ds"
           },
-          "query": "avg(system_memory_usage_percent{job=\"backend\"})",
+          "expr": "sum by (device) (rate(node_network_receive_bytes_total{job=\"node-exporter\",device!~\"lo|veth.*|br.*|docker.*\"}[5m]))",
+          "legendFormat": "rx {{device}}",
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "sum by (device) (rate(node_network_transmit_bytes_total{job=\"node-exporter\",device!~\"lo|veth.*|br.*|docker.*\"}[5m]))",
+          "legendFormat": "tx {{device}}",
+          "refId": "B"
         }
       ],
-      "title": "Memory Usage",
-      "type": "gauge"
+      "title": "Host Network I/O",
+      "type": "timeseries"
     },
     {
       "datasource": {
@@ -145,249 +253,71 @@
       },
       "fieldConfig": {
         "defaults": {
-          "color": {
-            "mode": "thresholds"
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
           },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          },
+          "expr": "ping_average_response_ms{job=\"telegraf\"}",
+          "legendFormat": "{{url}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Ping Latency",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
           "unit": "percent"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 8,
-        "w": 12,
+        "w": 8,
         "x": 0,
         "y": 16
       },
-      "id": 3,
-      "options": {
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "title": "Disk Usage",
-        "uid": "disk-usage"
-      },
-      "pluginVersion": "13.0.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus-ds"
-          },
-          "query": "avg(system_disk_usage_percent{job=\"backend\"})",
-          "refId": "A"
-        }
-      ],
-      "title": "Disk Usage",
-      "type": "gauge"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus-ds"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": []
-          },
-          "unit": "bytes/s"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 24,
-        "x": 0,
-        "y": 24
-      },
-      "id": 4,
-      "options": {
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "13.0.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus-ds"
-          },
-          "query": "rate(network_bytes_sent[5m])",
-          "refId": "A"
-        }
-      ],
-      "title": "Network I/O",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus-ds"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": []
-          },
-          "unit": "bytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 32
-      },
-      "id": 5,
-      "options": {
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        }
-      },
-      "pluginVersion": "13.0.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus-ds"
-          },
-          "query": "sum(rate(system_metrics{job=\"backend\"}.{field=~\"proto_.*\"}[5m]))",
-          "refId": "A"
-        }
-      ],
-      "title": "Protocol Distribution",
-      "type": "bargauge"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus-ds"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": []
-          },
-          "unit": "count"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 40
-      },
-      "id": 6,
-      "options": {
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        }
-      },
-      "pluginVersion": "13.0.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus-ds"
-          },
-          "query": "rate(network_packets_sent[5m]) OR rate(network_packets_recv[5m])",
-          "refId": "A"
-        }
-      ],
-      "title": "Network Packets Rate",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus-ds"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": []
-          },
-          "unit": "bytes/s"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 48
-      },
       "id": 7,
-      "options": {
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        }
-      },
-      "pluginVersion": "13.0.2",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "prometheus-ds"
           },
-          "query": "rate(system_metrics{job=\"backend\"}.{field=~\"network_.*\"}[5m])",
+          "expr": "ping_percent_packet_loss{job=\"telegraf\"}",
+          "legendFormat": "{{url}}",
           "refId": "A"
         }
       ],
-      "title": "Network Drops Rate",
+      "title": "Ping Packet Loss",
       "type": "timeseries"
     },
     {
@@ -397,54 +327,71 @@
       },
       "fieldConfig": {
         "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": []
-          },
-          "unit": "bytes/s"
+          "unit": "none"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 56
+        "w": 8,
+        "x": 8,
+        "y": 16
       },
       "id": 8,
-      "options": {
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "13.0.2",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "prometheus-ds"
           },
-          "query": "rate(system_metrics{job=\"backend\"}.{field=~\"disk_io_.*\"}[5m])",
+          "expr": "up",
+          "legendFormat": "{{job}} {{instance}}",
           "refId": "A"
         }
       ],
-      "title": "Disk I/O Rate",
-      "type": "timeseries"
+      "title": "Scrape Health",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 16
+      },
+      "id": 9,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "network_dashboard_devices_total",
+          "legendFormat": "{{status}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Backend Device Inventory",
+      "type": "stat"
     }
   ],
+  "refresh": "15s",
   "schemaVersion": 38,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "home-network",
+    "prometheus"
+  ],
   "templating": {
     "list": []
   },
@@ -454,15 +401,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Prometheus Overview",
-  "uid": "prometheus-overview",
-  "version": 1
-}</write_to_file>
-<task_progress>
-- [ ] Confirm the correct Grafana dashboard and its port
-- [ ] Provide detailed instructions to access the dashboard
-- [x] Diagnose the root cause of the "Failed to load dashboard data" error by inspecting the backend and Prometheus configurations
-- [x] Update the Grafana dashboard configuration with the correct data sources and structure
-- [x] Refine dashboard usability by filtering metrics and adding meaningful titles (Completed)
-</task_progress>
-</write_to_file>
+  "title": "Home Network Overview",
+  "uid": "home-network-overview",
+  "version": 1,
+  "weekStart": ""
+}

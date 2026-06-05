@@ -4,9 +4,7 @@ import './App.css';
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [devices, setDevices] = useState([]);
-   const [metrics, setMetrics] = useState(null);
-   const [ubuntuMetrics, setUbuntuMetrics] = useState(null);
-   const [macbookMetrics, setMacbookMetrics] = useState(null);
+   const [metrics, setMetrics] = useState([]);
    const [loading, setLoading] = useState(true);
    const [error, setError] = useState(null);
    const [searchResults, setSearchResults] = useState([]);
@@ -25,7 +23,7 @@ function App() {
         // 2. Fetch system metrics
         const metricsResponse = await fetch('/api/metrics');
         const metricsData = await metricsResponse.json();
-        setMetrics(metricsData.metrics || null);
+        setMetrics(metricsData.metrics || []);
       } catch (e) {
         console.error('Error fetching dashboard data:', e);
         setError('Failed to load dashboard data. Please check the backend API status.');
@@ -120,32 +118,18 @@ function App() {
 
       {/* Metrics Grid */}
       <div className="metrics-grid">
-        {metrics && (
+        {metrics.length > 0 && (
           <div className="card metrics-card">
-            <h3>CPU Usage</h3>
-            <p className="metric-value">{metrics.cpu_usage_percent || 'N/A'}%</p>
-            <p className="metric-detail">Current Load</p>
+            <h3>Influx Samples</h3>
+            <p className="metric-value">{metrics.length}</p>
+            <p className="metric-detail">Latest custom agent fields</p>
           </div>
         )}
-        {metrics && (
-          <div className="card metrics-card">
-            <h3>Memory Usage</h3>
-            <p className="metric-value">{metrics.memory_usage_percent || 'N/A'}%</p>
-            <p className="metric-detail">Available RAM</p>
-          </div>
-        )}
-        {metrics && (
+        {devices.length > 0 && (
           <div className="card metrics-card">
             <h3>Devices Discovered</h3>
-            <p className="metric-value">{metrics.discovered_devices_count || 'N/A'}</p>
-            <p className="metric-detail">Total Scanned Hosts</p>
-          </div>
-        )}
-        {metrics && (
-          <div className="card metrics-card">
-            <h3>Total Process Count</h3>
-            <p className="metric-value">{metrics.process_count || 'N/A'}</p>
-            <p className="metric-detail">Running Services</p>
+            <p className="metric-value">{devices.length}</p>
+            <p className="metric-detail">Registered hosts</p>
           </div>
         )}
       </div>
@@ -166,9 +150,9 @@ function App() {
           <tbody>
             {devices.map((device, index) => (
               <tr key={index}>
-                <td>{device.ip_address || 'N/A'}</td>
+                <td>{device.ip || 'N/A'}</td>
                 <td>{device.hostname || 'N/A'}</td>
-                <td>{device.mac_address || 'N/A'}</td>
+                <td>{device.mac || 'N/A'}</td>
                 <td><span className={`status status-${(device.status || 'Unknown').toLowerCase()}`}>{device.status || 'Unknown'}</span></td>
                 <td><button className="detail-button">View</button></td>
               </tr>

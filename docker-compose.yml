@@ -2,15 +2,20 @@
 services:
   backend:
     build:
-      context: /Users/michaelvincentjones/Documents/GitHub/network-dashboard/backend
+      context: ./backend
       dockerfile: Dockerfile
     container_name: network-dashboard-backend
     env_file:
       - .env
     ports:
       - "8000:8000"
+    environment:
+      - DEVICE_DB_PATH=/data/devices.db
+      - INFLUXDB_URL=http://influxdb:8086
     networks:
       - default
+    volumes:
+      - backend_data:/data
   
   frontend:
     build:
@@ -33,12 +38,12 @@ services:
       - "8086:8086"
     environment:
       - DOCKER_INFLUXDB_INIT_MODE=setup
-      - DOCKER_INFLUXDB_INIT_USERNAME=admin
-      - DOCKER_INFLUXDB_INIT_PASSWORD=password12345
-      - DOCKER_INFLUXDB_INIT_ORG=network-dashboard
-      - DOCKER_INFLUXDB_INIT_BUCKET=network-metrics
-      - DOCKER_INFLUXDB_INIT_RETENTION=30d
-      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=kiqNHcZNp9kf-6onPGdoU02uKowNNeAE0KnXNPGBupc8B5yD7NrXZiLixwWl1cIWdZj-F9lTSjiTvvjvD0b44A==
+      - DOCKER_INFLUXDB_INIT_USERNAME=${INFLUXDB_USERNAME:-admin}
+      - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUXDB_PASSWORD:-password12345}
+      - DOCKER_INFLUXDB_INIT_ORG=${INFLUXDB_ORG:-network-dashboard}
+      - DOCKER_INFLUXDB_INIT_BUCKET=${INFLUXDB_BUCKET:-network-metrics}
+      - DOCKER_INFLUXDB_INIT_RETENTION=${INFLUXDB_RETENTION:-30d}
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${INFLUXDB_TOKEN}
     networks:
       - default
     volumes:
@@ -50,7 +55,10 @@ services:
     ports:
       - "3001:3000"
     environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
+      - INFLUXDB_TOKEN=${INFLUXDB_TOKEN}
+      - INFLUXDB_ORG=${INFLUXDB_ORG:-network-dashboard}
+      - INFLUXDB_BUCKET=${INFLUXDB_BUCKET:-network-metrics}
     volumes:
       - ./grafana/provisioning:/etc/grafana/provisioning
     depends_on:
@@ -69,11 +77,42 @@ services:
     networks:
       - default
 
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: network-dashboard-node-exporter
+    restart: unless-stopped
+    command:
+      - "--path.procfs=/host/proc"
+      - "--path.rootfs=/rootfs"
+      - "--path.sysfs=/host/sys"
+      - "--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    networks:
+      - default
+
+  telegraf:
+    image: telegraf:1.31
+    container_name: network-dashboard-telegraf
+    restart: unless-stopped
+    cap_add:
+      - NET_RAW
+    ports:
+      - "9273:9273"
+    volumes:
+      - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - default
+
   agent:
     build: ./agent
     container_name: network-dashboard-agent
     env_file:
-      - ./agent/.env
+      - .env
     environment:
       - INFLUXDB_URL=http://influxdb:8086
     cap_add:
@@ -83,27 +122,9 @@ services:
       - influxdb
     networks:
       - default
-  
-  # Service for Ubuntu Server Metrics
-  ubuntu-server:
-    image: busybox
-    container_name: ubuntu-server
-    ports:
-      - "9100:9100"
-    command: tail -f /dev/null # Keep the container running
-    networks:
-      - default
-  
-  # Service for MacBook Pro Metrics
-  macbook-pro:
-    image: busybox
-    container_name: macbook-pro
-    ports:
-      - "9101:9101"
-    command: tail -f /dev/null # Keep the container running
-
 volumes:
   influxdb_data:
+  backend_data:
 
 networks:
   default:
