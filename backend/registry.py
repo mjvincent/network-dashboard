@@ -52,7 +52,7 @@ class DeviceRegistry:
         except sqlite3.OperationalError:
             pass
 
-    def update_device(self, device_info, cursor=None):
+    def update_device(self, device_info, cursor=None, source="scan"):
         """
         Updates or inserts a device in the registry.
         """
@@ -66,25 +66,25 @@ class DeviceRegistry:
 
         query = '''
             INSERT INTO devices (ip, hostname, mac, vendor, first_seen, last_seen, source, status)
-            VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'scan', 'online')
+            VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, 'online')
             ON CONFLICT(ip) DO UPDATE SET
                 hostname=excluded.hostname,
                 mac=excluded.mac,
                 vendor=excluded.vendor,
                 last_seen=CURRENT_TIMESTAMP,
-                source='scan',
+                source=excluded.source,
                 status='online'
         '''
 
         if cursor:
-            cursor.execute(query, (ip, hostname, mac, vendor))
+            cursor.execute(query, (ip, hostname, mac, vendor, source))
             return
 
         with sqlite3.connect(self.db_path) as conn:
-            conn.execute(query, (ip, hostname, mac, vendor))
+            conn.execute(query, (ip, hostname, mac, vendor, source))
             conn.commit()
 
-    def update_devices(self, devices):
+    def update_devices(self, devices, source="scan"):
         """
         Updates devices from scan results and detects new or disappeared devices.
         """
@@ -104,7 +104,7 @@ class DeviceRegistry:
                 new_device_ips.add(ip)
                 
                 is_new = ip not in existing_devices
-                self.update_device(device, cursor=cursor)
+                self.update_device(device, cursor=cursor, source=source)
                 
                 if is_new:
                     # Create discovery alert
@@ -178,7 +178,7 @@ class DeviceRegistry:
                 "uplink": known.get("uplink") or "",
                 "zone": known.get("zone") or "",
                 "map_group": known.get("map_group") or "",
-                "source": "known+scan" if known else "scan",
+                "source": self._merged_source(known, device),
                 "status": device.get("status") or "unknown",
                 "review_status": "known" if known else "needs_review",
                 "first_seen": device.get("first_seen"),
@@ -189,7 +189,7 @@ class DeviceRegistry:
             source_value = device.get("source") or "unknown"
             if source_value == "known":
                 device["review_status"] = "known"
-            elif source_value == "scan":
+            elif source_value in {"scan", "host-scan"}:
                 device["review_status"] = "needs_review"
             else:
                 device["review_status"] = "known"
@@ -228,6 +228,12 @@ class DeviceRegistry:
             device for device in self.get_merged_devices()
             if device.get("source") == "known+scan" and device.get("status") == "offline"
         ]
+
+    def _merged_source(self, known, discovered):
+        discovered_source = discovered.get("source") or "scan"
+        if known:
+            return "known+scan" if discovered_source == "scan" else f"known+{discovered_source}"
+        return discovered_source
 
     def get_topology_nodes(self):
         nodes = []

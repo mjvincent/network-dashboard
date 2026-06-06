@@ -1527,7 +1527,7 @@
     {
       "id": 35,
       "type": "table",
-      "title": "Recently Discovered Devices",
+      "title": "Recently Discovered Host Devices",
       "datasource": {
         "type": "yesoreyeram-infinity-datasource",
         "uid": "infinity-ds"
@@ -1563,7 +1563,7 @@
           },
           "type": "json",
           "source": "url",
-          "url": "/devices?source=scan",
+          "url": "/devices?source=host-scan",
           "method": "GET",
           "parser": "backend",
           "root_selector": "devices",
@@ -1607,7 +1607,7 @@
           ],
           "url_options": {
             "method": "GET",
-            "url": "/devices?source=scan",
+            "url": "/devices?source=host-scan",
             "data": "",
             "params": [],
             "headers": [],
@@ -1615,7 +1615,7 @@
             "body_content_type": "application/json"
           },
           "source_options": {
-            "url": "/devices?source=scan",
+            "url": "/devices?source=host-scan",
             "method": "GET"
           },
           "parser_options": {
@@ -2311,6 +2311,6 @@
   "timezone": "",
   "title": "Home Network Overview",
   "uid": "home-network-overview",
-  "version": 11,
+  "version": 12,
   "weekStart": ""
 }

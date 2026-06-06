@@ -67,6 +67,41 @@ the scan result as failed rather than polluting inventory with fake devices.
 For authoritative discovery, the next step is a host-side scanner on the Mac,
 a scanner running directly on the Ubuntu server, or a router integration.
 
+Run host-side discovery from the Mac to avoid Docker Desktop nmap false
+positives:
+
+```bash
+python3 scripts/host_discovery_scan.py --network-range 192.168.68.0/24
+```
+
+Use `--dry-run` to preview results without importing them. By default, the
+script reads the host ARP table with `arp -an` and posts discovered IP/MAC
+pairs to the backend as `host-scan` devices. Add `--ping-sweep` if you want to
+warm the ARP table first; ARP-only mode is faster and safer for routine use. To
+run it periodically on macOS, use a LaunchAgent, cron, or a simple terminal loop
+while testing:
+
+```bash
+while true; do
+  python3 scripts/host_discovery_scan.py --network-range 192.168.68.0/24
+  sleep 900
+done
+```
+
+You can also run the same script directly on the Ubuntu server, which is often
+more reliable for active ping/ARP discovery than Docker Desktop. Copy the script
+to the Ubuntu server and point it at the backend API on the Mac:
+
+```bash
+python3 host_discovery_scan.py \
+  --network-range 192.168.68.0/24 \
+  --api-url http://<macbook-ip>:8000 \
+  --ping-sweep
+```
+
+Replace `<macbook-ip>` with the MacBook's LAN IP. If the backend runs on the
+Ubuntu server instead, use `--api-url http://localhost:8000`.
+
 ## Ubuntu Server Metrics
 
 The Ubuntu Server panels expect node_exporter to run directly on the Ubuntu

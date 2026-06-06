@@ -6,6 +6,7 @@ import time
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, Query, Response
 from influxdb_client import InfluxDBClient
+from pydantic import BaseModel
 from prometheus_client import CONTENT_TYPE_LATEST, Gauge, Info, generate_latest
 
 from registry import DeviceRegistry
@@ -36,6 +37,19 @@ scan_state = {
     "last_duration_seconds": 0.0,
     "last_device_count": 0,
 }
+
+
+class DiscoveredDevice(BaseModel):
+    ip: str
+    hostname: str = ""
+    mac: str = ""
+    vendor: str = "Unknown"
+
+
+class DiscoveryImport(BaseModel):
+    network_range: str = SCAN_RANGE
+    source: str = "host-scan"
+    devices: list[DiscoveredDevice]
 device_total_gauge = Gauge("network_dashboard_devices_total", "Registered devices by status", ["status"])
 device_up_gauge = Gauge(
     "network_dashboard_device_up",
@@ -141,6 +155,42 @@ async def scan(network_range: str = SCAN_RANGE):
         raise HTTPException(status_code=502, detail=str(exc)) from exc
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+
+@app.post("/discovery/import")
+async def import_discovery(payload: DiscoveryImport):
+    started = time.time()
+    devices = [device.model_dump() for device in payload.devices]
+    source = payload.source or "host-scan"
+    try:
+        registry.update_devices(devices, source=source)
+        finished = time.time()
+        scan_state.update({
+            "network_range": payload.network_range,
+            "running": False,
+            "last_started_at": started,
+            "last_finished_at": finished,
+            "last_success_at": finished,
+            "last_success": 1,
+            "last_duration_seconds": finished - started,
+            "last_device_count": len(devices),
+            "last_error": "",
+            "last_source": source,
+        })
+        return {"network_range": payload.network_range, "source": source, "devices": devices}
+    except Exception as exc:
+        finished = time.time()
+        scan_state.update({
+            "network_range": payload.network_range,
+            "running": False,
+            "last_started_at": started,
+            "last_finished_at": finished,
+            "last_success": 0,
+            "last_duration_seconds": finished - started,
+            "last_error": str(exc),
+            "last_source": source,
+        })
+        raise HTTPException(status_code=500, detail=f"Failed to import discovery results: {exc}") from exc
 
 
 @app.get("/devices")
