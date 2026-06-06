@@ -57,6 +57,8 @@ def arp_table() -> list[dict[str, str]]:
 def scan(network_range: str, timeout_ms: int, workers: int, ping_sweep: bool) -> list[dict[str, str]]:
     network = ipaddress.ip_network(network_range, strict=False)
     if ping_sweep:
+        if platform.system() == "Darwin":
+            raise RuntimeError("--ping-sweep is disabled on macOS; use ARP-only mode or run ping sweep from Ubuntu/Linux.")
         with ThreadPoolExecutor(max_workers=workers) as executor:
             list(executor.map(lambda ip: ping_host(str(ip), timeout_ms), network.hosts()))
 
@@ -100,7 +102,10 @@ def main() -> None:
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
-    devices = scan(args.network_range, args.timeout_ms, args.workers, args.ping_sweep)
+    try:
+        devices = scan(args.network_range, args.timeout_ms, args.workers, args.ping_sweep)
+    except RuntimeError as exc:
+        raise SystemExit(str(exc)) from exc
     print(json.dumps({"network_range": args.network_range, "devices": devices}, indent=2))
 
     if args.dry_run:

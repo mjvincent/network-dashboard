@@ -74,12 +74,13 @@ positives:
 python3 scripts/host_discovery_scan.py --network-range 192.168.68.0/24
 ```
 
-Use `--dry-run` to preview results without importing them. By default, the
-script reads the host ARP table with `arp -an` and posts discovered IP/MAC
-pairs to the backend as `host-scan` devices. Add `--ping-sweep` if you want to
-warm the ARP table first; ARP-only mode is faster and safer for routine use. To
-run it periodically on macOS, use a LaunchAgent, cron, or a simple terminal loop
-while testing:
+Use `--dry-run` to preview results without importing them. On macOS, the script
+uses ARP-only mode: it reads the host ARP table with `arp -an` and posts
+discovered IP/MAC pairs to the backend as `host-scan` devices. Active
+`--ping-sweep` is intentionally disabled on macOS because macOS ping timeouts
+can leave long-running ping processes behind. To run ARP-only discovery
+periodically on macOS, use a LaunchAgent, cron, or a simple terminal loop while
+testing:
 
 ```bash
 while true; do
@@ -88,9 +89,9 @@ while true; do
 done
 ```
 
-You can also run the same script directly on the Ubuntu server, which is often
-more reliable for active ping/ARP discovery than Docker Desktop. Copy the script
-to the Ubuntu server and point it at the backend API on the Mac:
+You can also run the same script directly on the Ubuntu server, which is the
+preferred place for active ping/ARP discovery. Copy the script to the Ubuntu
+server and point it at the backend API on the Mac:
 
 ```bash
 python3 host_discovery_scan.py \
