@@ -36,6 +36,37 @@ in the Home Network Overview dashboard.
 Backend Nmap scanning remains available for exploration, but the primary
 Grafana inventory is the known-device YAML plus Telegraf ping metrics.
 
+## Discovery Review Workflow
+
+The backend runs scheduled LAN discovery every 15 minutes against
+`SCAN_RANGE`, which defaults to `192.168.68.0/24`. You can still trigger a scan
+manually:
+
+```bash
+curl "http://localhost:8000/scan?network_range=192.168.68.0/24"
+```
+
+Scan-only devices appear in Grafana as devices needing review. To promote one:
+
+1. Identify it from IP, hostname, MAC, vendor, and `last_seen`.
+2. Add it to `config/known_devices.yml` with name, role, location,
+   criticality, and optional `uplink`.
+3. Regenerate ping monitoring and restart Telegraf:
+
+```bash
+python3 scripts/generate_telegraf_config.py
+docker compose up -d --force-recreate telegraf
+```
+
+Unknown scan-only devices are visible in inventory and utilization panels, but
+they do not receive topology map edges until they are added to known devices.
+
+On Docker Desktop, container-based nmap discovery may report every LAN address
+as up. The backend refuses that likely false-positive result, and Grafana shows
+the scan result as failed rather than polluting inventory with fake devices.
+For authoritative discovery, the next step is a host-side scanner on the Mac,
+a scanner running directly on the Ubuntu server, or a router integration.
+
 ## Ubuntu Server Metrics
 
 The Ubuntu Server panels expect node_exporter to run directly on the Ubuntu

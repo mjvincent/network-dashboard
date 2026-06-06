@@ -1169,6 +1169,462 @@
       ]
     },
     {
+      "id": 31,
+      "type": "stat",
+      "title": "Last LAN Scan Result",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 52
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "network_dashboard_lan_scan_success",
+          "legendFormat": "scan success",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "type": "stat",
+      "title": "Last Successful LAN Scan Age",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 6,
+        "y": 52
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 1800
+              },
+              {
+                "color": "red",
+                "value": 3600
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "network_dashboard_lan_scan_last_success_age_seconds",
+          "legendFormat": "scan age",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "type": "table",
+      "title": "Device Count by Source",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 12,
+        "y": 52
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "footer": {
+          "show": false,
+          "reducer": [
+            "sum"
+          ],
+          "countRows": false,
+          "fields": ""
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-ds"
+          },
+          "expr": "count by (source) (network_dashboard_device_up)",
+          "format": "table",
+          "instant": true,
+          "legendFormat": "{{source}}",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "type": "table",
+      "title": "Offline Known Devices",
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "infinity-ds"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 18,
+        "y": 52
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "footer": {
+          "show": false,
+          "reducer": [
+            "sum"
+          ],
+          "countRows": false,
+          "fields": ""
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "infinity-ds"
+          },
+          "type": "json",
+          "source": "url",
+          "url": "/devices?review=offline_known",
+          "method": "GET",
+          "parser": "backend",
+          "root_selector": "devices",
+          "format": "table",
+          "columns": [
+            {
+              "selector": "ip",
+              "text": "ip",
+              "type": "string"
+            },
+            {
+              "selector": "hostname",
+              "text": "hostname",
+              "type": "string"
+            },
+            {
+              "selector": "role",
+              "text": "role",
+              "type": "string"
+            },
+            {
+              "selector": "criticality",
+              "text": "criticality",
+              "type": "string"
+            },
+            {
+              "selector": "last_seen",
+              "text": "last_seen",
+              "type": "string"
+            }
+          ],
+          "url_options": {
+            "method": "GET",
+            "url": "/devices?review=offline_known",
+            "data": "",
+            "params": [],
+            "headers": [],
+            "body_type": "raw",
+            "body_content_type": "application/json"
+          },
+          "source_options": {
+            "url": "/devices?review=offline_known",
+            "method": "GET"
+          },
+          "parser_options": {
+            "type": "json"
+          }
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "type": "table",
+      "title": "Unknown Devices Needing Review",
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "infinity-ds"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 60
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "footer": {
+          "show": false,
+          "reducer": [
+            "sum"
+          ],
+          "countRows": false,
+          "fields": ""
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "infinity-ds"
+          },
+          "type": "json",
+          "source": "url",
+          "url": "/devices?review=needed",
+          "method": "GET",
+          "parser": "backend",
+          "root_selector": "devices",
+          "format": "table",
+          "columns": [
+            {
+              "selector": "ip",
+              "text": "ip",
+              "type": "string"
+            },
+            {
+              "selector": "hostname",
+              "text": "hostname",
+              "type": "string"
+            },
+            {
+              "selector": "mac",
+              "text": "mac",
+              "type": "string"
+            },
+            {
+              "selector": "vendor",
+              "text": "vendor",
+              "type": "string"
+            },
+            {
+              "selector": "status",
+              "text": "status",
+              "type": "string"
+            },
+            {
+              "selector": "first_seen",
+              "text": "first_seen",
+              "type": "string"
+            },
+            {
+              "selector": "last_seen",
+              "text": "last_seen",
+              "type": "string"
+            }
+          ],
+          "url_options": {
+            "method": "GET",
+            "url": "/devices?review=needed",
+            "data": "",
+            "params": [],
+            "headers": [],
+            "body_type": "raw",
+            "body_content_type": "application/json"
+          },
+          "source_options": {
+            "url": "/devices?review=needed",
+            "method": "GET"
+          },
+          "parser_options": {
+            "type": "json"
+          }
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "type": "table",
+      "title": "Recently Discovered Devices",
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "infinity-ds"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 60
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "footer": {
+          "show": false,
+          "reducer": [
+            "sum"
+          ],
+          "countRows": false,
+          "fields": ""
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "infinity-ds"
+          },
+          "type": "json",
+          "source": "url",
+          "url": "/devices?source=scan",
+          "method": "GET",
+          "parser": "backend",
+          "root_selector": "devices",
+          "format": "table",
+          "columns": [
+            {
+              "selector": "ip",
+              "text": "ip",
+              "type": "string"
+            },
+            {
+              "selector": "hostname",
+              "text": "hostname",
+              "type": "string"
+            },
+            {
+              "selector": "mac",
+              "text": "mac",
+              "type": "string"
+            },
+            {
+              "selector": "vendor",
+              "text": "vendor",
+              "type": "string"
+            },
+            {
+              "selector": "status",
+              "text": "status",
+              "type": "string"
+            },
+            {
+              "selector": "first_seen",
+              "text": "first_seen",
+              "type": "string"
+            },
+            {
+              "selector": "last_seen",
+              "text": "last_seen",
+              "type": "string"
+            }
+          ],
+          "url_options": {
+            "method": "GET",
+            "url": "/devices?source=scan",
+            "data": "",
+            "params": [],
+            "headers": [],
+            "body_type": "raw",
+            "body_content_type": "application/json"
+          },
+          "source_options": {
+            "url": "/devices?source=scan",
+            "method": "GET"
+          },
+          "parser_options": {
+            "type": "json"
+          }
+        }
+      ]
+    },
+    {
       "datasource": {
         "type": "prometheus",
         "uid": "prometheus-ds"
@@ -1183,7 +1639,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 52
+        "y": 68
       },
       "id": 7,
       "targets": [
@@ -1215,7 +1671,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 52
+        "y": 68
       },
       "id": 8,
       "targets": [
@@ -1247,7 +1703,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 52
+        "y": 68
       },
       "id": 9,
       "targets": [
@@ -1309,7 +1765,7 @@
         "h": 8,
         "w": 6,
         "x": 0,
-        "y": 60
+        "y": 76
       },
       "targets": [
         {
@@ -1368,7 +1824,7 @@
         "h": 8,
         "w": 6,
         "x": 6,
-        "y": 60
+        "y": 76
       },
       "targets": [
         {
@@ -1431,7 +1887,7 @@
         "h": 8,
         "w": 6,
         "x": 12,
-        "y": 60
+        "y": 76
       },
       "targets": [
         {
@@ -1494,7 +1950,7 @@
         "h": 8,
         "w": 6,
         "x": 18,
-        "y": 60
+        "y": 76
       },
       "targets": [
         {
@@ -1523,7 +1979,7 @@
         "h": 8,
         "w": 6,
         "x": 0,
-        "y": 76
+        "y": 92
       },
       "id": 16,
       "options": {
@@ -1592,7 +2048,7 @@
         "h": 8,
         "w": 18,
         "x": 6,
-        "y": 76
+        "y": 92
       },
       "id": 17,
       "options": {
@@ -1682,7 +2138,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 84
+        "y": 100
       },
       "id": 18,
       "options": {
@@ -1758,7 +2214,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 92
+        "y": 108
       },
       "id": 10,
       "options": {
@@ -1804,7 +2260,7 @@
         "h": 8,
         "w": 16,
         "x": 8,
-        "y": 92
+        "y": 108
       },
       "id": 11,
       "options": {
@@ -1855,6 +2311,6 @@
   "timezone": "",
   "title": "Home Network Overview",
   "uid": "home-network-overview",
-  "version": 9,
+  "version": 11,
   "weekStart": ""
 }

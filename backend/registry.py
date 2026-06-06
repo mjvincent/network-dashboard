@@ -22,15 +22,17 @@ class DeviceRegistry:
                     hostname TEXT,
                     mac TEXT,
                     vendor TEXT,
+                    first_seen DATETIME DEFAULT CURRENT_TIMESTAMP,
                     last_seen DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    source TEXT DEFAULT 'scan',
                     status TEXT DEFAULT 'online'
                 )
             ''')
-            # Add status column if it doesn't exist (for migration)
-            try:
-                cursor.execute("ALTER TABLE devices ADD COLUMN status TEXT DEFAULT 'online'")
-            except sqlite3.OperationalError:
-                pass
+            self._add_column_if_missing(cursor, "devices", "first_seen", "DATETIME")
+            self._add_column_if_missing(cursor, "devices", "source", "TEXT DEFAULT 'scan'")
+            self._add_column_if_missing(cursor, "devices", "status", "TEXT DEFAULT 'online'")
+            cursor.execute("UPDATE devices SET first_seen = COALESCE(first_seen, last_seen, CURRENT_TIMESTAMP)")
+            cursor.execute("UPDATE devices SET source = COALESCE(source, 'scan')")
 
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS alerts (
@@ -43,6 +45,12 @@ class DeviceRegistry:
                 )
             ''')
             conn.commit()
+
+    def _add_column_if_missing(self, cursor, table, column, definition):
+        try:
+            cursor.execute(f"ALTER TABLE {table} ADD COLUMN {column} {definition}")
+        except sqlite3.OperationalError:
+            pass
 
     def update_device(self, device_info, cursor=None):
         """
@@ -57,13 +65,14 @@ class DeviceRegistry:
             return
 
         query = '''
-            INSERT INTO devices (ip, hostname, mac, vendor, last_seen, status)
-            VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, 'online')
+            INSERT INTO devices (ip, hostname, mac, vendor, first_seen, last_seen, source, status)
+            VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'scan', 'online')
             ON CONFLICT(ip) DO UPDATE SET
                 hostname=excluded.hostname,
                 mac=excluded.mac,
                 vendor=excluded.vendor,
                 last_seen=CURRENT_TIMESTAMP,
+                source='scan',
                 status='online'
         '''
 
@@ -145,7 +154,7 @@ class DeviceRegistry:
             cursor.execute("SELECT * FROM devices ORDER BY last_seen DESC")
             return [dict(row) for row in cursor.fetchall()]
 
-    def get_merged_devices(self):
+    def get_merged_devices(self, source=None, review=None):
         devices_by_ip = {}
 
         for device in load_known_devices():
@@ -171,16 +180,54 @@ class DeviceRegistry:
                 "map_group": known.get("map_group") or "",
                 "source": "known+scan" if known else "scan",
                 "status": device.get("status") or "unknown",
+                "review_status": "known" if known else "needs_review",
+                "first_seen": device.get("first_seen"),
                 "last_seen": device.get("last_seen"),
             }
 
+        for ip, device in list(devices_by_ip.items()):
+            source_value = device.get("source") or "unknown"
+            if source_value == "known":
+                device["review_status"] = "known"
+            elif source_value == "scan":
+                device["review_status"] = "needs_review"
+            else:
+                device["review_status"] = "known"
+
+        devices = list(devices_by_ip.values())
+        if source:
+            devices = [device for device in devices if device.get("source") == source]
+        if review == "needed":
+            devices = [device for device in devices if device.get("review_status") == "needs_review"]
+        elif review == "offline_known":
+            devices = [
+                device for device in devices
+                if device.get("source") == "known+scan" and device.get("status") == "offline"
+            ]
+
         return sorted(
-            devices_by_ip.values(),
+            devices,
             key=lambda item: (
                 item.get("source") not in {"known", "known+scan"},
                 item.get("ip", ""),
             ),
         )
+
+    def get_device_counts_by_source(self):
+        counts = {}
+        for device in self.get_merged_devices():
+            source = device.get("source") or "unknown"
+            counts[source] = counts.get(source, 0) + 1
+        return [{"source": source, "count": count} for source, count in sorted(counts.items())]
+
+    def get_review_needed_devices(self):
+        return self.get_merged_devices(review="needed")
+
+    def get_offline_known_devices(self):
+        return [
+            device for device in self.get_merged_devices()
+            if device.get("source") == "known+scan" and device.get("status") == "offline"
+        ]
 
     def get_topology_nodes(self):
         nodes = []
